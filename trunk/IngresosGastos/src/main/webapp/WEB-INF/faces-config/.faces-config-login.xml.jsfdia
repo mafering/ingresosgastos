@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS ENTITY="JSFProcess">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#login#login.xhtml"
+  PATH="/login/login.xhtml" SHAPE="296,56,50,89">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#login#login.xhtml:0"
+   NAME="item" PATH="/login/login.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="ok::#list#exampleList.xhtml" NAME="output"
+    PATH="/list/exampleList.xhtml"
+    TARGET="rules:#list#exampleList.xhtml" TITLE="ok"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="error::#login#login.xhtml" NAME="output1"
+    PATH="/login/login.xhtml"
+    SHAPE="345,104,400,104,400,152,280,152,280,64,295,64"
+    TARGET="rules:#login#login.xhtml" TITLE="error"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="64,32,53,42">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::0" NAME="item">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="logout::#login#login.xhtml" NAME="output"
+    PATH="/login/login.xhtml" TARGET="rules:#login#login.xhtml" TITLE="logout"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#login#retorno.xhtml" PATH="/login/retorno.xhtml" SHAPE="216,280,50,25">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#login#retorno.xhtml:0" NAME="item" PATH="/login/retorno.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="ok::#list#exampleList.xhtml" NAME="output"
+    PATH="/list/exampleList.xhtml"
+    TARGET="rules:#list#exampleList.xhtml" TITLE="ok"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="error::#login#login.xhtml" NAME="output1"
+    PATH="/login/login.xhtml" TARGET="rules:#login#login.xhtml" TITLE="error"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#list#exampleList.xhtml" PATH="/list/exampleList.xhtml" SHAPE="496,17,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#list#exampleList.xhtml:0" NAME="item" PATH="/list/exampleList.xhtml"/>
+ </PROCESS-ITEM>
+</PROCESS>
