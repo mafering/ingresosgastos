@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" template="/layout/normal.xhtml">
+	<ui:define name="body">
+
+		<h1><h:outputText value="#{msg.tituloListado}"/></h1>
+
+		<div id="tabla" align="center">
+
+			<h:dataTable value="#{listado.listaNombres}" var="person"
+				style="width: 75%;">
+	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.campoNombre}" />
+					</f:facet>
+					<h:outputText value="#{person.nombre}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.campoApellidos}" />
+					</f:facet>
+					<h:outputText value="#{person.apellidos}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+		<hr />
+
+		<h:commandButton styleClass="boton nuevo" action="new" value="#{msg.botonNuevo}" />
+
+	</ui:define>
+</ui:composition>
