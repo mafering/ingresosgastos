@@ -41,11 +41,13 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>3.2.0.ga</version>
     </dependency>
+    <!-- 
     <dependency>
       <groupId>es.gdtel.afirma</groupId>
       <artifactId>afirma-autenticacion</artifactId>
       <version>0.3</version>
     </dependency>
+    -->
   </dependencies>
 </project>
 
