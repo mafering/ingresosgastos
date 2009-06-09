@@ -5,7 +5,7 @@ import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import es.gdtel.afirma.Autenticacion;
+//import es.gdtel.afirma.Autenticacion;
 
 
 
@@ -14,7 +14,7 @@ public class LoginBean{
 	private String usuario;
 	private String clave;
 	private String nombreCompleto;
-	private Autenticacion autenticacion;
+	//private Autenticacion autenticacion;
 	
 	public String getNombreCompleto() {
 		return nombreCompleto;
@@ -55,26 +55,28 @@ public class LoginBean{
 		usuario = "";
 		clave = "";
 		nombreCompleto = "";
-		autenticacion = null;
+		//autenticacion = null;
 		((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
 		return "logout";
 	}
 	
 	public String getUrlautenticacion () {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-		return Autenticacion.getURLAutenticacion(session.getId());
+		//return Autenticacion.getURLAutenticacion(session.getId());
+		return "ok";
 	}
 
 	public boolean getAutenticar () {
 		String sessionId = ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getId();
 		String datos = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("datos");
 		NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
-		autenticacion = new Autenticacion();
+		//autenticacion = new Autenticacion();
 		String resultado = "logout";
-		if (autenticacion.autenticar(datos, sessionId)) {
-			nombreCompleto = autenticacion.getNombreCompleto();
+		//if (autenticacion.autenticar(datos, sessionId)) {
+			//nombreCompleto = autenticacion.getNombreCompleto();
+			nombreCompleto = "Antonio Duarte";
 			resultado = "ok";
-		}
+		//}
 		if (!FacesContext.getCurrentInstance().getResponseComplete()) {
 			navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, resultado);
 		}

@@ -1,46 +1,57 @@
 package es.antonio.duarte.IngresosGastos.dao;
 
+import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Ver tutotial
  * http://www.adictosaltrabajo.com/tutoriales/tutoriales.php?pagina=desarrolloRapidoJava
+ * @param <T>
  */
 
-1. @Repository  
-2. public class SpringHibernateDao extends HibernateDaoSupport implements Dao {  
-3.   
-4.     @Autowired  
-5.     public SpringHibernateDao(SessionFactory sessionFactory) {  
-6.         super.setSessionFactory(sessionFactory);  
-7.     }  
-8.   
-9.     @Transactional  
-10.     public void persist(Object entity) {  
-11.         getHibernateTemplate().saveOrUpdate(entity);  
-12.     }  
-13.   
-14.     @Transactional  
-15.     public void persist(Object[] entities) {  
-16.         for (int i = 0; i < entities.length; i++) {  
-17.             persist(entities[i]);  
-18.         }  
-19.     }  
-20.   
-21.     @Transactional(readOnly = true)  
-22.     public <T> List<T> find(Class<T> entityClass) {  
-23.         final List<T> entities = getHibernateTemplate().loadAll(entityClass);  
-24.         return entities;  
-25.     }  
-26.   
-27.     @Transactional(readOnly = true)  
-28.     public <T> T load(Class<T> entityClass, Serializable id) {  
-29.         final T entity = (T)getHibernateTemplate().load(entityClass, id);  
-30.         return entity;  
-31.     }  
-32.   
-33.     @Transactional(readOnly = true)  
-34.     public <T> List<T> find(String hql) {  
-35.         final List<T> entities = getHibernateTemplate().find(hql);  
-36.         return entities;  
-37.     }  
-38.   
-39. }  
+ @Repository  
+ public class SpringHibernateDao<T> extends HibernateDaoSupport implements Dao {  
+   
+     @Autowired  
+     public SpringHibernateDao(SessionFactory sessionFactory) {  
+         super.setSessionFactory(sessionFactory);  
+     }  
+   
+     @Transactional  
+     public void persist(Object entity) {  
+         getHibernateTemplate().saveOrUpdate(entity);  
+     }  
+   
+     @Transactional  
+     public void persist(Object[] entities) {  
+         for (int i = 0; i < entities.length; i++) {  
+             persist(entities[i]);  
+         }  
+     }  
+   
+     @Transactional(readOnly = true)  
+     public <T> List<T> find(Class<T> entityClass) {  
+         final List<T> entities = getHibernateTemplate().loadAll(entityClass);  
+         return entities;  
+     }  
+   
+     @Transactional(readOnly = true)  
+     public <T> T load(Class<T> entityClass, Serializable id) {  
+         final T entity = (T)getHibernateTemplate().load(entityClass, id);  
+         return entity;  
+     }  
+   
+     @Transactional(readOnly = true)  
+     public <T> List<T> find(String hql) {  
+         final List<T> entities = getHibernateTemplate().find(hql);  
+         return entities;  
+     }
+
+	
+ }  

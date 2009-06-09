@@ -31,6 +31,12 @@
       <artifactId>myfaces-api</artifactId>
       <version>1.1.5</version>
     </dependency>
+	<dependency>
+       	<groupId>org.apache.myfaces.tomahawk</groupId>
+       	<artifactId>tomahawk</artifactId>
+       	<version>1.1.6</version>
+     </dependency>
+      
     <dependency>
       <groupId>com.sun.facelets</groupId>
       <artifactId>jsf-facelets</artifactId>
@@ -95,7 +101,24 @@
              <groupId>javax.annotation</groupId>  
              <artifactId>jsr250-api</artifactId>  
              <version>1.0</version>   
-         </dependency>    
+         </dependency>
+    <!-- ========== Log ========== -->
+         <dependency>
+         	<groupId>javax.faces</groupId>
+         	<artifactId>jsf-api</artifactId>
+         	<version>1.2_02</version>
+         </dependency>
+         <dependency>
+         	<groupId>com.corejsf</groupId>
+         	<artifactId>corejsf-validator</artifactId>
+         	<version>1.0</version>
+         </dependency>
+         <dependency>
+         	<groupId>commons-logging</groupId>
+         	<artifactId>commons-logging</artifactId>
+         	<version>1.1</version>
+         </dependency>
+         
   </dependencies>  
  
 </project>
