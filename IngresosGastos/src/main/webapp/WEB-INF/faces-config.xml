@@ -208,7 +208,7 @@
     </managed-bean>
 
     <!-- Add additional beans here -->
-
+<!-- 
     <render-kit>
         <description>Some replacements for the standard renderers</description>
         <renderer>
@@ -229,5 +229,5 @@
         <validator-id>com.corejsf.validator.CommonsValidator</validator-id>
         <validator-class>com.corejsf.validator.CommonsValidator</validator-class>
     </validator>
-
+-->
 </faces-config>
