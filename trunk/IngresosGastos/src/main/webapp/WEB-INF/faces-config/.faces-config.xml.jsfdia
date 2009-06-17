@@ -1,14 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PROCESS ENTITY="JSFProcess">
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#index.xhtml"
-  PATH="/index.xhtml" SHAPE="104,128,50,41">
-  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#index.xhtml:0"
-   NAME="item" PATH="/index.xhtml">
-   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="login::#login#login.xhtml" NAME="output"
-    PATH="/login/login.xhtml" TARGET="rules:#login#login.xhtml" TITLE="login"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#login#login.xhtml"
-  PATH="/login/login.xhtml" SHAPE="384,152,50,25"/>
-</PROCESS>
+<PROCESS ENTITY="JSFProcess"/>
