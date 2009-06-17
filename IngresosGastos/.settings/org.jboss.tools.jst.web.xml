@@ -4,6 +4,14 @@
  <FILESYSTEM ENTITY="FileSystemFolder" INFO="Content-Type=Web"
   LOCATION="%workspace.home%/.." NAME="WEB-ROOT"/>
  <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%eclipse.project%" NAME="JSF"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%workspace.home%/../../src/test/java" NAME="src"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%workspace.home%/../../src/test/resources" NAME="src-1"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%workspace.home%/../../src/main/resources" NAME="src-2"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%workspace.home%/../../src/main/java" NAME="src-3"/>
  <WEB ENTITY="JstWeb" MODEL_PATH="/web.xml" SERVLET_VERSION="2.4">
   <MODULE ENTITY="WebJSFModule" MODEL_PATH="/faces-config.xml"
    ROOT="WEB-ROOT" SRC="src" URI="/WEB-INF/faces-config.xml"/>
