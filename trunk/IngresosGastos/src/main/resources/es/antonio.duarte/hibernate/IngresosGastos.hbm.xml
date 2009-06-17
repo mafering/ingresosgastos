@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2008 9:48:43 by Hibernate Tools 3.2.0.b11 -->
+<hibernate-mapping>
+    <class name="es.gdtel.prueba.domain.Jsf" table="STRUTS2">
+        <id name="pkIdent" type="java.lang.Integer">
+            <column name="CLAVE" precision="22" scale="0" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="apellidos" type="java.lang.String">
+            <column name="APELLIDOS" length="50" />
+        </property>
+        <property name="usuario" type="java.lang.String">
+            <column name="USUARIO" length="10" />
+        </property>
+        <property name="clave" type="java.lang.String">
+            <column name="PASS" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
