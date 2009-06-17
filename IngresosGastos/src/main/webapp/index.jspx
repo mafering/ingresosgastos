@@ -1,0 +1,16 @@
+ <f:view xmlns:f="http://java.sun.com/jsf/core"        
+ 		xmlns:h="http://java.sun.com/jsf/html"        
+ 		xmlns:ice="http://www.icesoft.com/icefaces/component"        
+ 		>
+ 
+    <html> 
+	    <head>
+	    	<title>Ingresos - Gastos</title> 
+	    </head> 
+	    <body bgcolor="white">	
+				<h3>Bienvenido</h3>
+				<br />
+				aqui estamos			
+		</body> 
+	</html> 
+</f:view>
