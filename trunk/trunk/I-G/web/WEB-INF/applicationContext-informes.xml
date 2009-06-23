@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xmlns:tx="http://www.springframework.org/schema/tx"
+   xmlns:util="http://www.springframework.org/schema/util"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+      http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+   <bean id="generadorInformes" class="es.antonio.duarte.servicios.informes.GeneradorInformesImpl"/>
+   
+   <bean id="pdf" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.PDF"/>
+   </bean>
+
+   <bean id="xls_poi" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.POI_XLS"/>
+   </bean>
+
+   <bean id="xls_jxl" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.JXL_XLS"/>
+   </bean>
+
+   <bean id="xml" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.XML"/>
+   </bean>
+
+   <bean id="html" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.HTML"/>
+   </bean>
+
+   <bean id="csv" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.CSV"/>
+   </bean>
+
+   <bean id="txt" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.TXT"/>
+   </bean>
+
+   <bean id="rtf" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+      <property name="staticField" value="es.antonio.duarte.servicios.informes.ExporterType.RTF"/>
+   </bean>
+   
+
+   <!--  <bean class="java.util.Locale" id="spanish">
+      <constructor-arg><value>"es"</value></constructor-arg>
+      <constructor-arg><value>"ES"</value></constructor-arg>
+   </bean>-->
+
+
+   <bean id="informeIngresosGastos"
+   class="es.antonio.duarte.servicios.informes.Informe">
+      <property name="name"><value>IngresosGastos</value></property>
+      <property name="jasperPath"><value>informes</value></property>
+      <property name="jasperName"><value>InformeIngresosGastos</value></property>
+      <property name="virtualizerNeeded"><value>false</value></property>
+      <property name="msgResourceName"><value>titulos</value></property>
+      <!-- <property name="locale" ref="spanish" /> -->
+      <property name="params">
+         <map>
+            <entry key="id" value="ID" />
+         </map>
+      </property>
+      <property name="exporterType" ref="pdf"/>
+      <property name="generadorInformes" ref="generadorInformes"/>
+   </bean>
+   
+   
+</beans>

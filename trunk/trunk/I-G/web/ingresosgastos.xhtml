@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core">
+
+  <f:loadBundle basename="mensajes" var="m" />
+
+  <h:form>
+  <h:messages styleClass="errorText"/>
+
+    <h:dataTable value="#{ingresosGastosBean.listaIngresosGastos}" var="inga" rowClasses="oddRow, evenRow" headerClass="tableHeader">
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="#{ig.encfecha}" />
+        </f:facet>
+          <h:outputText value="#{inga.fecha}">
+            <f:convertDateTime type="date" dateStyle="short" />
+          </h:outputText>
+      </h:column>
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="#{ig.tipo}" />
+        </f:facet>
+          <h:outputText value="#{inga.tipo}" />
+      </h:column>
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="#{ig.cantidad}" />
+        </f:facet>
+          <h:outputText value="#{inga.cantidad}" />
+      </h:column>
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="#{ig.concepto}" />
+        </f:facet>
+          <h:outputText value="#{inga.concepto}" />
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="#{m.encmodificar}" />
+        </f:facet>
+
+        <h:commandLink action="#{ingresosGastosBean.actualizar}">
+            <h:graphicImage id="imagenA" border="0" alt="#{m.modificaringresogasto}"  url="/images/ico_doc_editar.gif" style="border:0px;text-align: center;"/>
+        </h:commandLink>
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="#{m.enceliminar}" />
+        </f:facet>
+
+        <h:commandLink action="#{ingresosGastosBean.eliminar}">
+          <h:graphicImage id="imagenE" border="0" alt="#{m.eliminaringresogasto}"  url="/images/ico_doc_borrar.gif" style="border:0px;text-align: center;"/>
+        </h:commandLink>
+      </h:column>
+
+    </h:dataTable>
+  </h:form>
+
+
+</html>

@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <style>
+        .optionList {
+          height:22px;
+        }
+        .vertical-menu-cell {
+            padding:0px 4px 0px 4px;
+        }
+    </style>
+<h:form>
+<f:loadBundle basename="mensajes" var="m" />
+        <h:panelGrid class="vertical-menu-cell" columns="1" cellspacing="0" cellpadding="0" id="panelGridVerticalMenu">
+
+            <rich:dropDownMenu value="#{m.menuinfogeneral}" direction="bottom-right" jointPoint="tr" id="dropDownMenu1" style="border:1px solid #E9E9E9" >
+                <rich:menuItem value="#{m.encingresosgastos}" action="#{ingresosGastosBean.consultar}" id="menuItem1"/>
+            </rich:dropDownMenu>
+
+            <rich:dropDownMenu value="#{m.menuinformes}" direction="bottom-right" jointPoint="tr" id="dropDownMenu3">
+                <rich:menuItem value="#{m.generarinforme}" action="#{informesBean.generarInforme}" id="menuItem3"/>
+            </rich:dropDownMenu>
+
+            <rich:dropDownMenu value="#{m.menulogout}" direction="bottom-right" jointPoint="tr" id="dropDownMenu4">
+                <rich:menuItem value="#{m.menulogout}" action="#{logoutBean.logout}" id="menuItem4"/>
+            </rich:dropDownMenu>
+
+       </h:panelGrid>
+    </h:form>
+</ui:composition>
+
+
+

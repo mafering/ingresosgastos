@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:rich="http://richfaces.org/rich">
+<ui:composition template="/layout/layoutSimple.xhtml">
+  <ui:define name="title">#{m.encerror}</ui:define>
+  <ui:define name="content">
+
+  <f:loadBundle basename="mensajes" var="m" />
+
+  <h:form>
+        <h:messages styleClass="errorText" />
+  </h:form>
+
+  </ui:define>
+</ui:composition>
+</html>
+

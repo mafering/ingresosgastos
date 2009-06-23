@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title><ui:insert name="title">Ingresos - Gastos</ui:insert></title>
+<link rel="stylesheet" type="text/css" href="./css/main.css" />
+</head>
+
+<body>
+
+<div id="header">
+<div>
+<div class="top_row">
+<div class="logo"><img src="./images/logo.gif" alt="Ingresos-Gastos" /></div>
+</div>
+<div class="header_row">
+<div class="nav">
+<div id="navigation"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="center"><br />
+<span class="titleText"> <ui:insert name="title" /> </span>
+<hr />
+<ui:insert name="content">
+  <div><ui:include src="content.xhtml" /></div>
+</ui:insert></div>
+
+<div id="footer"><ui:insert name="footer">
+  <ui:include src="footer.xhtml" />
+</ui:insert></div>
+
+</body>
+
+</html>
+

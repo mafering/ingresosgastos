@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ 
+ <managed-bean>
+  <managed-bean-name>i18nBean</managed-bean-name>
+  <managed-bean-class>es.antonio.duarte.controller.I18nBackingBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>logoutBean</managed-bean-name>
+  <managed-bean-class>es.antonio.duarte.controller.LogoutBackingBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+  
+ <managed-bean>
+  <managed-bean-name>informesBean</managed-bean-name>
+  <managed-bean-class>es.antonio.duarte.controller.InformesBackingBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>informeServicio</property-name>
+   <value>#{informeServicio}</value>
+  </managed-property>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>ingresosGastosBean</managed-bean-name>
+  <managed-bean-class>es.antonio.duarte.controller.IngresosGastosBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>servicio</property-name>
+   <value>#{ingresosGastosServicio}</value>
+  </managed-property>
+ </managed-bean>
+ 
+ <application>
+ <!-- 
+  <view-handler>com.endesa.arqame4j.parqweb.util.VistasAmeFacelets</view-handler>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+  -->
+  <view-handler>es.antonio.duarte.util.VistasIGFacelets</view-handler>  
+  <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+  <locale-config>
+   <default-locale>es</default-locale>
+   <supported-locale>en</supported-locale>
+  </locale-config>
+  <message-bundle>mensajes</message-bundle>
+ </application>
+ 
+</faces-config>

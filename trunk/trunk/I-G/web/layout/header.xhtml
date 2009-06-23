@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:rich="http://richfaces.org/rich">
+
+<style>
+.derecha {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  width: 200px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  font-size: 0.75em;
+  color: #FFFFFF;
+}
+
+.barra {
+  position: absolute;
+  left: 200px;
+  top: 105px;
+}
+</style>
+
+<f:verbatim>
+
+<div>
+  <div class="top_row">
+  <div class="logo"><img src="./images/logo.png" alt="IngresosGastos" /></div>
+  </div>
+  <div class="header_row">
+  <div class="nav" />
+  </div>
+
+  <div class="header_row2">
+  <div class="nav2" />
+  </div>
+</div>
+</f:verbatim>
+
+  <h:form styleClass="barra">
+    <f:loadBundle basename="mensajes" var="m" />
+    <h:panelGrid columns="1" cellspacing="5" cellpadding="0">
+      <rich:toolBar>
+        <rich:dropDownMenu id="dropDownMenu0Header" direction="bottom-right">
+          <f:facet name="label">
+            <h:panelGroup>
+              <h:graphicImage value="/images/copy.gif" styleClass="pic" />
+              <h:outputText value="#{m.menuinfogeneral}">
+              </h:outputText>
+            </h:panelGroup>
+          </f:facet>
+          <rich:menuItem value="#{m.encingresosgastos}"
+            action="#{ingresosGastosBean.consultar}" id="menuItem0Header"
+            icon="/images/create_doc.gif">
+          </rich:menuItem>
+        </rich:dropDownMenu>
+        
+
+        <rich:dropDownMenu value="#{m.menuinformes}"
+          id="dropDownMenu2Header">
+          <rich:menuItem value="#{m.generarinforme}"
+            action="#{informesBean.generarInforme}" id="menuItem2Header"
+            icon="/images/create_doc.gif" />
+        </rich:dropDownMenu>
+
+        <rich:dropDownMenu value="#{m.menulogout}" id="dropDownMenu3Header">
+          <rich:menuItem value="#{m.menulogout}" action="#{logoutBean.logout}"
+            id="menuItem3Header" />
+        </rich:dropDownMenu>
+      </rich:toolBar>
+    </h:panelGrid>
+  </h:form>
+
+  <h:form id="formaIdioma" styleClass="derecha">
+    <h:outputText value="#{m.cambiaridioma}" />
+    <rich:spacer width="20" />
+    <h:commandLink action="#{i18nBean.cambiarEsp}" immediate="true">
+      <h:graphicImage id="imagenEsp" border="0" alt="#{m.espaniol}"
+        url="/images/flag-spain.gif" style="border:0px;text-align: center;" />
+    </h:commandLink>
+    <rich:spacer width="20" />
+    <h:commandLink action="#{i18nBean.cambiarIng}" immediate="true"
+      style="text-align:center">
+      <h:graphicImage id="imagenIng" border="0" alt="#{m.ingles}"
+        url="/images/flag-uk.gif" style="border:0px;text-align: center;" />
+    </h:commandLink>
+  </h:form>
+</ui:composition>

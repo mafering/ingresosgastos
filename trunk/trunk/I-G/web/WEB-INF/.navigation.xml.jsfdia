@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS ENTITY="JSFProcess">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="32,17,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::0" NAME="item">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.consultar}:#ingresosgastos.xhtml"
+    NAME="output" PATH="/ingresosgastos.xhtml"
+    TARGET="rules:#ingresosgastos.xhtml" TITLE="#{ingresosGastosBean.consultar}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules::1" SHAPE="32,129,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::1" NAME="item">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{logoutBean.logout}:#logout.xhtml" NAME="output"
+    PATH="/logout.xhtml" TARGET="rules:#logout.xhtml" TITLE="#{logoutBean.logout}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#logout.xhtml"
+  PATH="/logout.xhtml" SHAPE="304,257,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#ingresosgastos.xhtml" PATH="/ingresosgastos.xhtml" SHAPE="240,33,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#ingresosgastos.xhtml:0" NAME="item" PATH="/ingresosgastos.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.insertar}:#editarIngresosGastos.xhtml"
+    NAME="output" PATH="/editarIngresosGastos.xhtml"
+    TARGET="rules:#editarIngresosGastos.xhtml" TITLE="#{ingresosGastosBean.insertar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{menBean.buscar}:#editarIngresosGastos.xhtml"
+    NAME="output1" PATH="/editarIngresosGastos.xhtml"
+    TARGET="rules:#editarIngresosGastos.xhtml" TITLE="#{menBean.buscar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.buscar}:#editarIngresosGastos.xhtml"
+    NAME="output2" PATH="/editarIngresosGastos.xhtml"
+    TARGET="rules:#editarIngresosGastos.xhtml" TITLE="#{ingresosGastosBean.buscar}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#editarIngresosGastos.xhtml"
+  PATH="/editarIngresosGastos.xhtml" SHAPE="480,17,0,0"/>
+</PROCESS>

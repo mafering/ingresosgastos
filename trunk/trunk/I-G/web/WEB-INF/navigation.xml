@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+ <navigation-rule>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.consultar}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ingresosgastos.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <navigation-case>
+   <from-action>#{logoutBean.logout}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/logout.xhtml</to-view-id>
+  </navigation-case> 
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <from-view-id>/ingresosgastos.xhtml</from-view-id>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.actualizar}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/editarIngresosGastos.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.insertar}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/editarIngresosGastos.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.buscar}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/editarIngresosGastos.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+</faces-config>
