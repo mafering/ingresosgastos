@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.endesa.arqame4j.parqweb.servicios.InformeServicio;
+import es.antonio.duarte.servicios.InformeServicio;
 
 /**
  * Clase que controla generación del informe PDF y el logout.
@@ -51,7 +51,7 @@ public class InformesBackingBean {
        ServletOutputStream sos = null;
        try {
            sos = response.getOutputStream();
-           informeServicio.generaInformeMensaje(sos,FacesContext.getCurrentInstance().getViewRoot().getLocale());
+           informeServicio.generaInformeIngresosGastos(sos,FacesContext.getCurrentInstance().getViewRoot().getLocale());
            sos.flush();
        } catch (IOException e) {
            LOG.error("Problemas al volcar los datos al flujo " + e);

@@ -50,8 +50,8 @@ public interface InformeServicio {
      * del que lo ha creado.
      * @param locale Locale para el informe.
     void generaInformeMensajePorFecha(final Date fecha, OutputStream outStr,
-     */
                                                                 Locale locale);
+     */
 
     /**
      * Genera el informe de todos los mensajes con tal fecha.
