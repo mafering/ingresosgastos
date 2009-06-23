@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core">
+<head>
+     <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>     
+<body>
+    <ui:composition template="/layout/layoutSimple.xhtml">
+      <ui:define name="title">#{m.menulogout}</ui:define>
+      <ui:define name="content">
+
+      <f:loadBundle basename="mensajes" var="m" />
+
+      <h:form>
+        <h:outputText value="#{m.mensajelogout}" />
+      </h:form>
+
+       <div id="lineaPuntosBotones" class="lineaPuntos">&nbsp;</div>
+       <form action="login.jsf">
+        <div id="botones"><input type="submit" id="entrar" class="boton" value="Entrar "/></div>
+       </form>
+      </ui:define>
+    </ui:composition>
+</body>
+</html>
+

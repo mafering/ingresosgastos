@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/docs/api/org/apache/log4j/xml/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    
+    <!-- Configuración de un ConsoleAppender -->
+    <appender name="consola" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <!-- para desarrollo quizá fuera más util DEBUG -->
+        <param name="Threshold" value="INFO"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}][%t][%c{1}] %-5p - %m%n"/>
+        </layout>
+    </appender>
+    
+    <!-- Configuración de un RollingFileAppender de aplicacion-->
+    <appender name="aplicacion" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="aplicacion.log"/>
+        <param name="Threshold" value="info"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}][%t][%c{1}] %-5p - %m%n"/>
+        </layout>
+    </appender>
+
+   <!-- Configuración de un DailyRollingFileAppender para errores -->
+   <appender name="errores" class="org.apache.log4j.DailyRollingFileAppender">
+       <param name="File" value="error.log"/>
+       <param name="Threshold" value="ERROR"/>
+       <layout class="org.apache.log4j.PatternLayout">
+           <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}][%t][%c{1}] %-5p - %m%n"/>
+       </layout>
+   </appender>
+   
+     <!-- Configuración de un DailyRollingFileAppender para persistencia -->
+   <appender name="datos" class="org.apache.log4j.DailyRollingFileAppender">
+       <param name="File" value="datos.log"/>
+       <param name="Threshold" value="OFF"/>
+       <layout class="org.apache.log4j.PatternLayout">
+           <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}][%t][%c{1}] %-5p - %m%n"/>
+       </layout>
+   </appender>
+   
+      <!-- Configuración de un DailyRollingFileAppender para Spring -->
+   <appender name="spring" class="org.apache.log4j.DailyRollingFileAppender">
+       <param name="File" value="spring.log"/>
+       <param name="Threshold" value="OFF"/>
+       <layout class="org.apache.log4j.PatternLayout">
+           <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}][%t][%c{1}] %-5p - %m%n"/>
+       </layout>
+   </appender>
+   
+    <!-- Configuración de un DailyRollingFileAppender para presentacion -->
+   <appender name="vista" class="org.apache.log4j.DailyRollingFileAppender">
+       <param name="File" value="vista.log"/>
+       <param name="Threshold" value="OFF"/>
+       <layout class="org.apache.log4j.PatternLayout">
+           <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}][%t][%c{1}] %-5p - %m%n"/>
+       </layout>
+   </appender>
+   
+    
+
+   <!-- Definición de las categorías para iBatis -->
+   <category name="com.ibatis">
+        <level value ="DEBUG" />
+        <appender-ref ref="datos"/>
+    </category>
+    <!-- Definición de las categorías para hibernate -->
+    <category name="org.hibernate">
+      <level value="DEBUG"/>
+      <appender-ref ref="datos"/>
+   </category>
+    <!-- Para sql genérico -->
+    <category name="java.sql">
+        <priority value="debug"/>
+        <appender-ref ref="datos"/>
+    </category>
+    <!-- categoría para JSF -->
+    <category name="javax.faces">
+       <level value="debug" />
+    <appender-ref ref="vista" />
+    </category>
+     <!-- categoría para Struts -->
+    <category name="org.apache.struts">
+       <level value="debug" />
+    <appender-ref ref="vista" />
+    </category>
+    <!-- Categoría para Spring -->
+    <category name="org.springframework">
+       <level value="debug" />
+    <appender-ref ref="spring" />
+    </category>
+
+     
+    
+    <root>
+        
+        <level value ="ALL" />
+        <appender-ref ref="consola"/>
+        <appender-ref ref="aplicacion"/>
+         <appender-ref ref="errores"/>
+          
+    </root>
+
+ </log4j:configuration>
+

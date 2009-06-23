@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:rich="http://richfaces.org/rich">
+<ui:composition template="/layout/layout.xhtml">
+  <ui:define name="title">#{m.tituloingresosgastos}</ui:define>
+  <ui:define name="content">
+
+    <table>
+      <tr>
+        <td>
+        <h:form id="formaEditar">
+          <h:inputHidden id="ingresogastoid" value="#{ingresosGastosBean.ingresogasto.id}" />
+          <h:message for="descripcion" styleClass="errorText" />
+
+          <h:panelGrid columns="3" rowClasses="oddRow, evenRow" id="panelGridEditar"  >
+
+            <h:outputLabel for="fecha" styleClass="label">
+              <h:outputText value="#{m.agregaringresogasto} " rendered="#{ingresosGastosBean.ingresogasto.id == null}" />
+              <h:outputText value="#{m.actualizar} " rendered="#{#{ingresosGastosBean.ingresogasto.id != null}" />
+            </h:outputLabel>
+
+              <rich:calendar id="fecha" value="#{ingresosGastosBean.ingresogasto.fecha}" />
+
+            <h:commandLink action="#{ingresosGastosBean.insertar}" rendered="#{ingresosGastosBean.ingresogasto.id == null}">
+              <h:graphicImage id="imagenA" border="0" alt="#{m.agregaringresogasto}"
+                url="/images/ico_agregar.gif"
+                style="border:0px;text-align: center;" width="15" height="15" />
+            </h:commandLink>
+
+            <h:commandLink action="#{ingresosGastosBean.actualizarLista}" rendered="#{menBean.mensaje.id != null}">
+              <h:graphicImage id="imagenActualizar" border="0"
+                alt="#{m.actualizar}" url="/images/ico_doc_editar.gif"
+                style="border:0px;text-align: center;" />
+            </h:commandLink>
+
+          </h:panelGrid>
+
+        </h:form>
+        </td>
+      </tr>
+      <tr>
+        <td><ui:insert name="lista">
+          <ui:include src="ingresosgastos.xhtml" />
+        </ui:insert></td>
+      </tr>
+    </table>
+
+  </ui:define>
+</ui:composition>
+
+</html>

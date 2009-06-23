@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <ui:composition template="/layout/layoutSimple.xhtml">
+        <ui:define name="title">#{m.titulologin}</ui:define>
+        <ui:define name="content">
+            <f:loadBundle basename="mensajes" var="m" />
+            <f:verbatim>
+            <form action="seguridad.jsf" method="POST" id="formEntradaLog"  class="formEntradaLog">
+                    <div id="contenido">
+
+                        <div id="formLoginZonaContenido">
+
+
+
+                            <div id="caja">
+                                <div id="cajaIzda">
+                                    <div id="cajaSup"></div>
+                                    <div id="cajaContenido">
+
+
+
+                                        <fieldset>
+                                            <label for="j_username" id="usuario" accesskey="u">${m.usuario}</label>
+                                            <input type="text" id="j_username"
+                                                   name="j_username" value="" size="30" title="Nombre de usuario" />
+                                            <br />
+
+                                            <label for="j_password" id="clave" accesskey="c">${m.clave}</label>
+                                            <input type="password" id="j_password" name="j_password" size="12"   title="Clave" />
+                                            <br />
+
+                                        </fieldset>
+
+
+                                    </div>
+                                    <div id="cajaInf"></div>
+
+
+                                </div>
+                            </div>
+
+                            <!--div id="lineaPuntosBotones" class="lineaPuntos">&nbsp;</div-->
+                            <div id="botones"><input type="submit" value=" ${m.titulologin} "
+                                                     id="entrar" class="boton" /> </div>
+
+                        </div>
+
+                    </div>
+
+
+            </form>
+            </f:verbatim>
+            <h:form id="formaIdioma" styleClass="derecha" >
+                <h:outputText value="#{m.cambiaridioma}" />
+                <rich:spacer width="20" />
+                <h:commandLink action="#{i18nBean.cambiarEsp}" immediate="true">
+                    <h:graphicImage id="imagenEsp" border="0" alt="#{m.espaniol}"
+                                    url="/images/flag-spain.gif" style="border:0px;text-align: center;" />
+                </h:commandLink>
+                <rich:spacer width="20" />
+                <h:commandLink action="#{i18nBean.cambiarIng}" immediate="true"
+                               style="text-align:center">
+                    <h:graphicImage id="imagenIng" border="0" alt="#{m.ingles}"
+                                    url="/images/flag-uk.gif" style="border:0px;text-align: center;" />
+                </h:commandLink>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
