@@ -12,6 +12,8 @@
          pointcut="execution(* es.antonio.duarte.servicios.*ServicioImpl.*(..))" />
 
    </aop:config>
+   
+   <aop:aspectj-autoproxy proxy-target-class="true" />
 
    <tx:advice id="tran">
       <tx:attributes>

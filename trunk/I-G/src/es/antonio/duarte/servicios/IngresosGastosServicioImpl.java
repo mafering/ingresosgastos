@@ -7,9 +7,11 @@ package es.antonio.duarte.servicios;
  */
 
 import java.util.Collection;
+
+import javax.annotation.Resource;
+
 import es.antonio.duarte.dao.*;
 import es.antonio.duarte.model.IngresosGastos;
-
 @SuppressWarnings("unchecked")
 public class IngresosGastosServicioImpl implements IngresosGastosServicio{
 	

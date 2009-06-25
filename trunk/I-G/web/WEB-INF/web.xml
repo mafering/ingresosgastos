@@ -32,7 +32,10 @@
 	<context-param>
 	    <description>Todos los archivos de spring: servicios, seguridad, transacciones, daos, propiedades e informes</description>
 		<param-name>contextConfigLocation</param-name>
+		<!-- 
 		<param-value>classpath*:applicationContext-*.xml</param-value>
+		-->
+		<param-value>/WEB-INF/applicationContext-*.xml</param-value>
 	</context-param>
 	
 	<context-param>
@@ -42,6 +45,11 @@
 		</param-value>
 	</context-param>
 	
+	<context-param>
+	  <param-name>log4jConfigLocation</param-name>
+	  <param-value>classpath:es/antonio/duarte/resources/log4j.xml</param-value>
+	</context-param>
+
 	<!-- 
 	<filter>
 	      <description>Filtro para que la aplicacion controle el acceso a paginas solo a los usuarios autentificados</description>
@@ -73,7 +81,9 @@
    </filter-mapping>
    
    
-
+	<listener>
+	  <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
     <listener>
 		<listener-class>
 			org.apache.myfaces.webapp.StartupServletContextListener
