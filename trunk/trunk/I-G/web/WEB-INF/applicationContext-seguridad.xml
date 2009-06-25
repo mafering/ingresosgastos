@@ -5,6 +5,7 @@
    xmlns:sec="http://www.springframework.org/schema/security"
    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.2.xsd">
+<!--                           
     <sec:http auto-config="true">
         <sec:intercept-url pattern="${excepcion.1}" filters="none" />
         <sec:intercept-url pattern="${excepcion.2}" filters="none" />
@@ -24,4 +25,6 @@
             authorities="ROLE_USER" />
         </sec:user-service>
     </sec:authentication-provider>
-</beans>
+  --> 
+   
+  </beans>

@@ -28,8 +28,6 @@
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/dom4j-2008Q2.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/ejb3-persistence-2008Q2.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/facelets-2009Q2.jar"/>
-	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/hibernate3-2008Q2.jar"/>
-	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/hibernate-annotations-2008Q2.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/hsqldb-2006Q1.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/iText-2009Q2.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/lib/jasperreports-2009Q2.jar"/>
@@ -71,5 +69,10 @@
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/ic/pmd/asm-3.1.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/ic/pmd/jaxen-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/Spring-Hibernate-JSF/ic/pmd/pmd-4.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/dra002/practicas/I-G/web/WEB-INF/lib/myfaces-impl-1.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/dra002/practicas/I-G/web/WEB-INF/lib/tomahawk-1.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/dra002/practicas/I-G/web/WEB-INF/lib/tomahawk-sandbox-1.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/dra002/practicas/I-G/web/WEB-INF/lib/commons-el.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/dra002/practicas/I-G/web/WEB-INF/lib/mysql-connector-java-5.0.3-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

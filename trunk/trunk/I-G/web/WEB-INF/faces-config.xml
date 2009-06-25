@@ -39,6 +39,7 @@
  <!-- 
   <view-handler>com.endesa.arqame4j.parqweb.util.VistasAmeFacelets</view-handler>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+  <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>  
   -->
   <view-handler>es.antonio.duarte.util.VistasIGFacelets</view-handler>  
   <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
