@@ -47,7 +47,7 @@
    <default-locale>es</default-locale>
    <supported-locale>en</supported-locale>
   </locale-config>
-  <message-bundle>mensajes</message-bundle>
+  <message-bundle>es.antonio.duarte.resources.mensajes</message-bundle>
  </application>
  
 </faces-config>

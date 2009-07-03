@@ -3,12 +3,14 @@ package es.antonio.duarte.controller;
 import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.custom.datalist.HtmlDataList;
 
 import es.antonio.duarte.model.IngresosGastos;
 import es.antonio.duarte.servicios.IngresosGastosServicio;

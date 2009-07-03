@@ -14,7 +14,8 @@
 	<context-param>
 	    <description>Las paginas que intercepta el Faces servlet sean .xhtml</description>
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-		<param-value>.xhtml</param-value>
+		<!-- <param-value>.xhtml</param-value> -->
+		<param-value>.jspx</param-value>
 	</context-param>
 
  <context-param> 

@@ -10,7 +10,7 @@
   <ui:define name="title">#{m.encerror}</ui:define>
   <ui:define name="content">
 
-  <f:loadBundle basename="mensajes" var="m" />
+  <f:loadBundle basename="es.antonio.duarte.resources.mensajes" var="m" />
 
   <h:form>
         <h:messages styleClass="errorText" />

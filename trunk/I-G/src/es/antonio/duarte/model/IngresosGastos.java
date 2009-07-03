@@ -6,6 +6,7 @@ package es.antonio.duarte.model;
  */
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class IngresosGastos implements Serializable{
 	/**
 	 * Fecha del asiento del ingresogasto
 	 */
-	private String fecha;
+	private Date fecha;
 	
 	/**
 	 * Tipo de asiento que se realiza (o bien INGRESO o bien GASTO) 
@@ -70,7 +71,7 @@ public class IngresosGastos implements Serializable{
 	 * @param cantidad - El importe para la operacion a realizar
 	 * @param concepto - El motivo por el que se hace una operacion
 	 */
-	public IngresosGastos(final Long id, final String fecha, final String tipo, 
+	public IngresosGastos(final Long id, final Date fecha, final String tipo, 
 							final String cantidad, final String concepto){
 		
 		this.id = id;
@@ -104,7 +105,7 @@ public class IngresosGastos implements Serializable{
 	 * @return fecha - la fecha cuando se realiza la operacion
 	 */
 	@Column(name = "FECHA")
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
@@ -112,7 +113,7 @@ public class IngresosGastos implements Serializable{
 	 * Para modificar la fecha de la operacion
 	 * @param fecha
 	 */
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

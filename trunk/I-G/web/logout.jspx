@@ -13,7 +13,7 @@
       <ui:define name="title">#{m.menulogout}</ui:define>
       <ui:define name="content">
 
-      <f:loadBundle basename="mensajes" var="m" />
+      <f:loadBundle basename="es.antonio.duarte.resources.mensajes" var="m" />
 
       <h:form>
         <h:outputText value="#{m.mensajelogout}" />
