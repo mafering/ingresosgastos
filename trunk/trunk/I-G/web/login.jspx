@@ -11,7 +11,7 @@
     <ui:composition template="/layout/layoutSimple.xhtml">
         <ui:define name="title">#{m.titulologin}</ui:define>
         <ui:define name="content">
-            <f:loadBundle basename="mensajes" var="m" />
+            <f:loadBundle basename="es.antonio.duarte.resources.mensajes" var="m" />
             <f:verbatim>
             <form action="seguridad.jsf" method="POST" id="formEntradaLog"  class="formEntradaLog">
                     <div id="contenido">

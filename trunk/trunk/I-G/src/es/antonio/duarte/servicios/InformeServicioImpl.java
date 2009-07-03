@@ -161,7 +161,7 @@ public class InformeServicioImpl implements InformeServicio {
      * Modifica el servicio de ingresosgastos.
      * @param newIGServicio nuevo Servicio de ingresosgastos.
      */
-    public final void setIngresosGastosServicios(
+    public final void setIngresosGastosServicio(
                                         final IngresosGastosServicio newIGServicio) {
        this.ingresosGastosServicio = newIGServicio;
     }
