@@ -506,11 +506,15 @@ p.darkred {
 }
 
 .oddRow {
-  background-color: #FFFFFF
+  background-color: #FFFFFF;
+  
 }
 
+.otherRow {
+	background-color: #E6F7C8;
+	}
 .evenRow {
-  background-color: #F8F8F8
+  background-color: #F8F8F8;
 }
 
 .ocean {
@@ -518,6 +522,7 @@ p.darkred {
 }
 
 .tableHeader {
+  width:90%;
   background-color: #E9E9E9
 }
 
@@ -536,6 +541,16 @@ p.darkred {
 .errorText {
   color: red;
 }
+.enlaceInsertar{
+  width: 100%;
+  border: 0px dashed;
+  background-color: #FFFFFF;
+  text-align: right;
+  margin-top:20px;  
+}
+.tabla{
+	text-align: center;
+	}
 
 /* Estilos AMEDis  -  principal.css */
 

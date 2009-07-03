@@ -4,7 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:f="http://java.sun.com/jsf/core">
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:a4j="http://richfaces.org/a4j"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"  
+  >
 <ui:composition template="/layout/layout.xhtml">
   <ui:define name="title">#{m.tituloingresosgastos}</ui:define>
   <ui:define name="content">
@@ -14,31 +17,30 @@
   <h:form>
   <h:messages styleClass="errorText"/>
 
-    <h:dataTable value="#{ingresosGastosBean.listaIngresosGastos}" var="inga" rowClasses="oddRow, evenRow" headerClass="tableHeader">
-      
+    <h:dataTable value="#{ingresosGastosBean.listaIngresosGastos}" var="inga" styleClass="tabla" rowClasses="oddRow, evenRow" headerClass="tableHeader">
       <h:column>
         <f:facet name="header">
-          <h:outputText value="#{ig.encfecha}" />
+          <h:outputText value="#{m.fecha}" />
         </f:facet>
-          <h:outputText value="#{inga.fecha}">
-            <f:convertDateTime type="date" dateStyle="short" />
+          <h:outputText value="#{inga.fecha}">            
+            <f:convertDateTime type="date" dateStyle="medium" pattern="dd-MM-yyyy HH:mm"/>
           </h:outputText>
       </h:column>
       <h:column>
         <f:facet name="header">
-          <h:outputText value="#{ig.tipo}" />
+          <h:outputText value="#{m.tipo}" />
         </f:facet>
           <h:outputText value="#{inga.tipo}" />
       </h:column>
       <h:column>
         <f:facet name="header">
-          <h:outputText value="#{ig.cantidad}" />
+          <h:outputText value="#{m.cantidad}" />
         </f:facet>
           <h:outputText value="#{inga.cantidad}" />
       </h:column>
       <h:column>
         <f:facet name="header">
-          <h:outputText value="#{ig.concepto}" />
+          <h:outputText value="#{m.concepto}" />
         </f:facet>
           <h:outputText value="#{inga.concepto}" />
       </h:column>
@@ -47,23 +49,28 @@
         <f:facet name="header">
           <h:outputText value="#{m.encmodificar}" />
         </f:facet>
-
+		
         <h:commandLink action="#{ingresosGastosBean.actualizar}">
-            <h:graphicImage id="imagenA" border="0" alt="#{m.modificaringresogasto}"  url="/images/ico_doc_editar.gif" style="border:0px;text-align: center;"/>
+            <h:graphicImage id="imagenA" border="0" alt="#{m.modificaringresogasto}" title="#{m.modificaringresogasto}" url="/images/ico_doc_editar.gif" style="border:0px;text-align: center;"/>
         </h:commandLink>
       </h:column>
 
-      <h:column>
+      <h:column styleClass="columnaCentrada">
         <f:facet name="header">
           <h:outputText value="#{m.enceliminar}" />
         </f:facet>
 
         <h:commandLink action="#{ingresosGastosBean.eliminar}">
-          <h:graphicImage id="imagenE" border="0" alt="#{m.eliminaringresogasto}"  url="/images/ico_doc_borrar.gif" style="border:0px;text-align: center;"/>
+          <h:graphicImage id="imagenE" border="0" alt="#{m.eliminaringresogasto}" title="#{m.eliminaringresogasto}" url="/images/ico_doc_borrar.gif" style="border:0px;text-align: center;"/>
         </h:commandLink>
       </h:column>
-
     </h:dataTable>
+    <p class="enlaceInsertar">
+	    <a4j:commandLink action="#{ingresosGastosBean.insertar}" >
+			<h:graphicImage id="imagenI" border="0" alt="#{m.insertaringresogasto}" title="#{m.insertaringresogasto}" url="/images/ico_agregar.gif" style="border:0px;text-align: center;"/>            	
+	    </a4j:commandLink>
+    </p>
+			
   </h:form>
   </ui:define>
 </ui:composition>
