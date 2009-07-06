@@ -65,7 +65,7 @@ body {
 }
 
 #footer {
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 10px;
@@ -88,7 +88,7 @@ body {
   margin-left: 0;
   margin-bottom: 5px;
   padding-left: 0;
-  display: inline;
+  display: inline;  
 }
 
 #footer ul li {
@@ -105,12 +105,19 @@ body {
 
 #footer a:link,#footer a:visited {
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 #footer a:hover {
   color: #6C99FF;
 }
+#footer p{
+	margin-top:-5px;
+	margin-bottom:-5px;
+	background-color: #E1E6EC;
+	font-size: 1.75em; 
+}
+                   
 
 /* general anchor colors */
 a:link,a:visited {
@@ -168,9 +175,10 @@ a:hover {
 }
 
 .padded_container {
-  padding-top: 0.5em;
   padding-bottom: 0.5em;
+  padding-top: 0.5em;
 }
+
 
 /* top right nav */
 #rt_navigation {
@@ -272,9 +280,9 @@ div.header_row div.nav {
   height: 19px;
   font-size: 10px;
   color: #D0DCEA;
-  margin-top: 0px;
+  margin-top: 0px;  
   background-color: #768FB2;
-  padding-left: 16px;
+  /*padding-left: 16px;*/  
   padding-top: 4px;
 }
 
@@ -522,7 +530,7 @@ p.darkred {
 }
 
 .tableHeader {
-  width:90%;
+  width:100%;
   background-color: #E9E9E9
 }
 
@@ -549,7 +557,7 @@ p.darkred {
   margin-top:20px;  
 }
 .tabla{
-	text-align: center;
+	text-align: justify;
 	}
 
 /* Estilos AMEDis  -  principal.css */
@@ -740,4 +748,6 @@ h3 {
   margin-bottom: 1px;
 }
 
-
+th{
+	background-color: #344B77;
+}

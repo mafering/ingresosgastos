@@ -1,12 +1,14 @@
 package es.antonio.duarte.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -52,6 +54,9 @@ public class IngresosGastosBean {
 	 * El ingreso o gasto que se agrega o actualiza
 	 */
 	private IngresosGastos ingresogasto = new IngresosGastos();
+	
+	private List<SelectItem> tipos = new ArrayList<SelectItem>();
+	
 
 	
 	/**
@@ -105,7 +110,7 @@ public class IngresosGastosBean {
 	         LOG.info("entrando en el metodo actualizar() de IngresosGastosBean");
 	      }
 	      ingresogasto = (IngresosGastos) listaIngresosGastos.getRowData();
-	      LOG.info("El ingresogasto a actualizar es " + ingresogasto.getConcepto() + " con fecha: " + ingresogasto.getFecha() + " e importe: " + ingresogasto.getCantidad() );
+	      LOG.info("El ingresogasto a actualizar es (" + ingresogasto.getId() + ") " + ingresogasto.getConcepto() + " con fecha: " + ingresogasto.getFecha() + " e importe: " + ingresogasto.getCantidad() );
 	      return SUCCESS;
 	   }
 
@@ -147,7 +152,7 @@ public class IngresosGastosBean {
 	   }
 
 	   /**
-	    * @return La navegacion a la cual se dirige despues de insertar un mensaje
+	    * @return La navegacion a la cual se dirige despues de insertar un ingreso gasto
 	    *         nuevo
 	    */
 	   public String insertar() {
@@ -165,6 +170,18 @@ public class IngresosGastosBean {
 	      }
 	   }
 	
+	   /**
+	    * @return La navegacion a la que se dirige despues de seleccionar el enlace 
+	    *         para insertar un ingreso gasto
+	    */
+	   public String aInsertar() {
+	      if (LOG.isTraceEnabled()) {
+	         LOG.info("entrando en el metodo aInsertar() de IngresosGastosBean");
+	      }	      
+	      LOG.info("Vamos a insertar un registro de tipo INGRESO o GASTO");
+	      return SUCCESS;
+	   }
+	   
 
 	/**
 	 * @return el ingresogasto actual, ya sea para actualizar o para modificar
@@ -186,7 +203,8 @@ public class IngresosGastosBean {
     */
    private void recargar() {
       listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));
-      this.ingresogasto = new IngresosGastos();      
+      this.ingresogasto = new IngresosGastos();
+      this.tipos = new ArrayList<SelectItem>();
    }
 
    /**
@@ -194,7 +212,18 @@ public class IngresosGastosBean {
     */
    private void reset() {      
       this.ingresogasto = new IngresosGastos();
+      this.tipos = new ArrayList<SelectItem>();
    }
+   
+	public List<SelectItem> getTipos() {		
+		tipos.add(new SelectItem("Ingreso"));		
+		tipos.add(new SelectItem("Gasto"));
+		return tipos;
+	}
+	
+	public void setTipos(List<SelectItem> tipos) {
+		this.tipos = tipos;
+	}
 	
 	
 
