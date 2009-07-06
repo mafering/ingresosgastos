@@ -24,14 +24,30 @@
     NAME="output" PATH="/editarIngresosGastos.jspx"
     TARGET="rules:#editarIngresosGastos.jspx" TITLE="#{ingresosGastosBean.actualizar}:success"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{ingresosGastosBean.buscar}:#editarIngresosGastos.jspx"
+    ID="success:#{ingresosGastosBean.aInsertar}:#editarIngresosGastos.jspx"
     NAME="output1" PATH="/editarIngresosGastos.jspx"
+    TARGET="rules:#editarIngresosGastos.jspx" TITLE="#{ingresosGastosBean.aInsertar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.buscar}:#editarIngresosGastos.jspx"
+    NAME="output2" PATH="/editarIngresosGastos.jspx"
     TARGET="rules:#editarIngresosGastos.jspx" TITLE="#{ingresosGastosBean.buscar}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
   NAME="rules:#editarIngresosGastos.jspx"
-  PATH="/editarIngresosGastos.jspx" SHAPE="464,17,0,0"/>
+  PATH="/editarIngresosGastos.jspx" SHAPE="464,17,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem"
+   ID="rules:#editarIngresosGastos.jspx:0" NAME="item" PATH="/editarIngresosGastos.jspx">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.insertar}:#ingresosgastos.jspx"
+    NAME="output" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.insertar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.actualizarLista}:#ingresosgastos.jspx"
+    NAME="output1" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.actualizarLista}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#logout.jspx"
   PATH="/logout.jspx" SHAPE="240,177,0,0"/>
 </PROCESS>

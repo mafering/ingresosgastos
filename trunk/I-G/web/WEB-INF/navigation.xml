@@ -20,6 +20,20 @@
  </navigation-rule>
  
  <navigation-rule>
+  <from-view-id>/editarIngresosGastos.jspx</from-view-id>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.insertar}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ingresosgastos.jspx</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.actualizarLista}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ingresosgastos.jspx</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
   <from-view-id>/ingresosgastos.jspx</from-view-id>
   <navigation-case>
    <from-action>#{ingresosGastosBean.actualizar}</from-action>
@@ -27,7 +41,7 @@
    <to-view-id>/editarIngresosGastos.jspx</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-action>#{ingresosGastosBean.insertar}</from-action>
+   <from-action>#{ingresosGastosBean.aInsertar}</from-action>
    <from-outcome>success</from-outcome>
    <to-view-id>/editarIngresosGastos.jspx</to-view-id>
   </navigation-case>
@@ -35,6 +49,10 @@
    <from-action>#{ingresosGastosBean.buscar}</from-action>
    <from-outcome>success</from-outcome>
    <to-view-id>/editarIngresosGastos.jspx</to-view-id>
-  </navigation-case>
+  </navigation-case>  
  </navigation-rule>
+ 
+
+  
+ 
 </faces-config>
