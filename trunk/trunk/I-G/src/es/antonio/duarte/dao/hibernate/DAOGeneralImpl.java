@@ -1,10 +1,14 @@
 package es.antonio.duarte.dao.hibernate;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Example;
+
 import es.antonio.duarte.dao.DAOGeneral;
+import es.antonio.duarte.model.IngresosGastos;
 
 /**
  * Implementacion del DAO de Mensajes con Hibernate.
@@ -113,5 +117,6 @@ public class DAOGeneralImpl implements DAOGeneral {
       }
       return sessionFactory.getCurrentSession().get(clase[0], id);
    }
-
+   
+   
 }
