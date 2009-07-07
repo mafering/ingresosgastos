@@ -1,6 +1,7 @@
 package es.antonio.duarte.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -57,13 +58,28 @@ public class IngresosGastosBean {
 	
 	private List<SelectItem> tipos = new ArrayList<SelectItem>();
 	
+	/**
+	 * Para indicar si se está cargando la listaIngresosGastos de una busqueda o no
+	 */
+	private boolean buscando = false;
 
+	/**
+	    * La fecha del ingresogasto a buscar.
+	    */
+	private Date fechaBusqueda;
+	/**
+	 * El tipo del ingresogasto a buscar.
+	 */
+	private String tipoBusqueda;
+	
 	
 	/**
 	 * @return Lista de IngresosGastos
 	 */
 	public DataModel getListaIngresosGastos() {
-		listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));
+		if(!buscando){
+			listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));			
+		}
 		return listaIngresosGastos;
 	}
 	
@@ -100,6 +116,21 @@ public class IngresosGastosBean {
 		return SUCCESS;
 	}
 	
+	/**
+    *
+    */
+   public void consultarPorFecha() {
+      listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultarPorFecha(fechaBusqueda)));
+   }
+	
+   /**
+    * La consulta por tipo de ingresogasto.
+    */
+   public void consultarPorTipo() {
+      listaIngresosGastos.setWrappedData(new ArrayList(servicio
+               .consultarPorTipo(tipoBusqueda)));
+   }
+   
 	
 	/**
 	    * @return La navegacion a la que se dirige despues de seleccionar un ingresogasto
@@ -126,7 +157,7 @@ public class IngresosGastosBean {
 	      servicio.actualizar(ingresogasto);
 	      FacesContext.getCurrentInstance().addMessage(
 	               null,
-	               new FacesMessage("IngresoGasto con ID " + ingresogasto.getId()
+	               new FacesMessage(this.ingresogasto.getTipo() + " con ID " + ingresogasto.getId()
 	                        + " actualizado correctamente."));
 	      recargar();
 	      return SUCCESS;
@@ -145,7 +176,7 @@ public class IngresosGastosBean {
 	      servicio.eliminar(ingresogasto);
 	      FacesContext.getCurrentInstance().addMessage(
 	               null,
-	               new FacesMessage("IngresoGasto con ID " + ingresogasto.getId()
+	               new FacesMessage(this.ingresogasto.getTipo() + " con ID " + ingresogasto.getId()
 	                        + " eliminado correctamente."));
 	      recargar();
 	      return SUCCESS;
@@ -179,6 +210,30 @@ public class IngresosGastosBean {
 	         LOG.info("entrando en el metodo aInsertar() de IngresosGastosBean");
 	      }	      
 	      LOG.info("Vamos a insertar un registro de tipo INGRESO o GASTO");
+	      reset();
+	      return SUCCESS;
+	   }
+	   
+	 
+	   /**
+	    * @return La navegacion a la que va despues de buscar un ingresogastos por fecha
+	    */
+	   public String buscar() {
+	      LOG.info("Entrando en el metodo buscar(), fecha=" + fechaBusqueda);
+	      this.buscando = true;
+	      if (fechaBusqueda != null) {
+	         LOG.info("*** Fecha a buscar " + fechaBusqueda);
+	         listaIngresosGastos.setWrappedData(new ArrayList(servicio
+	                  .consultarPorFecha(fechaBusqueda)));
+	      }else if (tipoBusqueda != null && !tipoBusqueda.equalsIgnoreCase("")) {
+	          LOG.info("*** Tipo a buscar " + tipoBusqueda);
+	          listaIngresosGastos.setWrappedData(new ArrayList(servicio
+	                   .consultarPorTipo(tipoBusqueda)));
+	      }else {
+	         LOG.info("*** TODA la lista");
+	         listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));
+	      }
+	      //reset();
 	      return SUCCESS;
 	   }
 	   
@@ -202,9 +257,16 @@ public class IngresosGastosBean {
     *
     */
    private void recargar() {
-      listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));
+	   if(!buscando){
+		   listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));		   
+	   }else{
+		   
+	   }
       this.ingresogasto = new IngresosGastos();
       this.tipos = new ArrayList<SelectItem>();
+      this.fechaBusqueda = null;
+      this.tipoBusqueda = null;
+      this.buscando = false;
    }
 
    /**
@@ -213,11 +275,16 @@ public class IngresosGastosBean {
    private void reset() {      
       this.ingresogasto = new IngresosGastos();
       this.tipos = new ArrayList<SelectItem>();
+      this.fechaBusqueda = null;
+      this.tipoBusqueda = null;
+      this.buscando = false;
    }
    
-	public List<SelectItem> getTipos() {		
-		tipos.add(new SelectItem("Ingreso"));		
-		tipos.add(new SelectItem("Gasto"));
+	public List<SelectItem> getTipos() {
+		this.tipos = new ArrayList<SelectItem>();
+		this.tipos.add(new SelectItem("Ingreso"));
+		this.tipos.add(new SelectItem("Gasto"));
+		
 		return tipos;
 	}
 	
@@ -225,6 +292,35 @@ public class IngresosGastosBean {
 		this.tipos = tipos;
 	}
 	
+	/**
+	    * @return La fecha de busqueda que indroduce el usuario
+	    */
+	   public Date getFechaBusqueda() {
+	      return fechaBusqueda;
+	   }
+
+	   /**
+	    * @param fechaBusqueda Fecha del ingresogasto a buscar
+	    */
+	   public void setFechaBusqueda(final Date fechaBusqueda) {
+	      this.fechaBusqueda = fechaBusqueda;
+	   }
+
+	public boolean isBuscando() {
+		return buscando;
+	}
+
+	public void setBuscando(boolean buscando) {
+		this.buscando = buscando;
+	}
+
+	public String getTipoBusqueda() {
+		return tipoBusqueda;
+	}
+
+	public void setTipoBusqueda(String tipoBusqueda) {
+		this.tipoBusqueda = tipoBusqueda;
+	}
 	
 
 }
