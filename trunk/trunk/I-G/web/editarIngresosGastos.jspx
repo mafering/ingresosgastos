@@ -9,6 +9,16 @@
 <ui:composition template="/layout/layout.xhtml">
   <ui:define name="title">#{m.tituloingresosgastos}</ui:define>
   <ui:define name="content">
+  
+  <style type="text/css">
+            .rich-message-marker img {
+                padding-right:7px;
+            }
+            .rich-message-label {
+                color:red;
+            }
+  </style>     
+  
 	  <f:loadBundle basename="es.antonio.duarte.resources.mensajes" var="m" />
 
     <table width="90%">
@@ -23,16 +33,25 @@
         <td>
         <h:form id="formaEditar">
           <h:inputHidden id="id" value="#{ingresosGastosBean.ingresogasto.id}" />
-          <h:message for="fecha" styleClass="errorText" />
 
-          <h:panelGrid columns="2" rowClasses="oddRow, evenRow" id="panelGridEditar" width="100%">
+          <h:panelGrid columns="3" rowClasses="oddRow, evenRow" id="panelGridEditar" width="100%">
 			<h:column>
 	            <h:outputLabel for="fecha" styleClass="label">
 	              <h:outputText value="#{m.fecha} " />	              
 	            </h:outputLabel>
 	        </h:column>
 	        <h:column>
-	            <rich:calendar id="fecha" value="#{ingresosGastosBean.ingresogasto.fecha}" />
+	            <rich:calendar id="fecha" required="false" value="#{ingresosGastosBean.ingresogasto.fecha}" />
+			</h:column>
+			<h:column>	            
+	             <rich:message for="fecha">
+                        <f:facet name="passedMarker">
+                            <h:graphicImage  value="/images/passed.gif" /> 
+                        </f:facet>
+                        <f:facet name="errorMarker">
+                            <h:graphicImage value="/images/error.gif" />   
+                        </f:facet>
+                    </rich:message>	            
 			</h:column>
 			<h:column>
 				<h:outputLabel for="tipo" styleClass="label" >
@@ -40,9 +59,20 @@
 				</h:outputLabel>
 			</h:column>
 			<h:column>		
-				<h:selectOneListbox id="tipo" value="#{ingresosGastosBean.ingresogasto.tipo}" style=" width : 95%;">		            
+				<rich:comboBox selectFirstOnUpdate="false" id="tipo" required="false" value="#{ingresosGastosBean.ingresogasto.tipo}" 
+					style=" width : 95%;">				 		            
 		            <f:selectItems value="#{ingresosGastosBean.tipos}" />
-				</h:selectOneListbox>
+				</rich:comboBox>
+			</h:column>
+			<h:column>
+				<rich:message for="tipo">
+                        <f:facet name="passedMarker">
+                            <h:graphicImage  value="/images/passed.gif" /> 
+                        </f:facet>
+                        <f:facet name="errorMarker">
+                            <h:graphicImage value="/images/error.gif" />   
+                        </f:facet>
+                 </rich:message>	    
 			</h:column>
 			<h:column>
 				<h:outputLabel for="cantidad" styleClass="label" >
@@ -50,7 +80,19 @@
 				</h:outputLabel>
 			</h:column>
 			<h:column>
-				<h:inputText id="cantidad" value="#{ingresosGastosBean.ingresogasto.cantidad}" style=" width : 95%;"/>
+				<h:inputText id="cantidad" required="false" value="#{ingresosGastosBean.ingresogasto.cantidad}" style=" width : 95%;">
+					<f:validateDoubleRange minimum="0" maximum="10000000"/>
+				</h:inputText>
+			</h:column>
+			<h:column>
+				 <rich:message for="cantidad">
+                        <f:facet name="passedMarker">
+                            <h:graphicImage  value="/images/passed.gif" /> 
+                        </f:facet>
+                        <f:facet name="errorMarker">
+                            <h:graphicImage  value="/images/error.gif" />  
+                        </f:facet>
+                 </rich:message>
 			</h:column>
 			<h:column>
 				<h:outputLabel for="concepto" styleClass="label" >
@@ -58,23 +100,37 @@
 				</h:outputLabel>
 			</h:column>
 			<h:column>
-				<h:inputTextarea id="concepto" value="#{ingresosGastosBean.ingresogasto.concepto}" style=" width : 95%;"/>				
+				<h:inputTextarea id="concepto" required="false" value="#{ingresosGastosBean.ingresogasto.concepto}" style=" width : 95%;"/>				
 			</h:column>
 			<h:column>
-	            <h:commandLink action="#{ingresosGastosBean.insertar}" rendered="#{ingresosGastosBean.ingresogasto.id == null}">
-	              <h:graphicImage id="imagenA" border="0" alt="#{m.agregaringresogasto}"
-	                url="/images/ico_agregar.gif"
-	                style="border:0px;text-align: center;" width="15" height="15" />
-	            </h:commandLink>
+				<rich:message for="fecha">
+                        <f:facet name="passedMarker">
+                            <h:graphicImage  value="/images/passed.gif" /> 
+                        </f:facet>
+                        <f:facet name="errorMarker">
+                            <h:graphicImage value="/images/error.gif" />   
+                        </f:facet>
+                    </rich:message>	    
+			</h:column>
+			<h:column>
+			</h:column>
+			<h:column>
+				<div class="botonera">
+					<h:commandLink action="#{ingresosGastosBean.consultar}" styleClass="boton volver" >
+						<h:outputText value="#{m.volver}" />
+					</h:commandLink>
+					<h:commandLink action="#{ingresosGastosBean.insertar}" rendered="#{ingresosGastosBean.ingresogasto.id == null}" styleClass="boton insertar">
+						<h:outputText value="#{m.insertar}" />
+					</h:commandLink>
+					<h:commandLink action="#{ingresosGastosBean.actualizarLista}" rendered="#{ingresosGastosBean.ingresogasto.id != null}" styleClass="boton actualizar">
+						<h:outputText value="#{m.actualizar}" />
+					</h:commandLink>
+				</div>
             </h:column>
-            <h:column>            
-	            <h:commandLink action="#{ingresosGastosBean.actualizarLista}" rendered="#{ingresosGastosBean.ingresogasto.id != null}">
-	              <h:graphicImage id="imagenActualizar" border="0"
-	                alt="#{m.actualizar}" url="/images/ico_doc_editar.gif"
-	                style="border:0px;text-align: center;" />
-	            </h:commandLink>
+            <h:column>	          
 			</h:column>
           </h:panelGrid>
+	    
 
         </h:form>
         </td>
