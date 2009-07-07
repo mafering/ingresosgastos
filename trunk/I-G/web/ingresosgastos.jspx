@@ -17,13 +17,21 @@
   <h:form>
   <h:messages styleClass="errorText"/>
 	<rich:datascroller for="listaIG" maxPages="5" />	
-	    <rich:dataTable id="listaIG" value="#{ingresosGastosBean.listaIngresosGastos}" rows="10" var="inga" rowClasses="oddRow, evenRow" headerClass="tableHeader">
-	  		<rich:column>
-		       <f:facet name="header">
-		         <h:outputText value="#{m.concepto}" />
-		       </f:facet>
-	         	<h:outputText value="#{inga.concepto}" />
-	    	</rich:column>
+	    <rich:dataTable id="listaIG" value="#{ingresosGastosBean.listaIngresosGastos}" rows="10" var="inga" rowClasses="oddRow, evenRow" headerClass="tableHeader"	    	                    
+                    cellpadding="0" cellspacing="0" border="0"
+	    	>
+  		<rich:column>
+	       <f:facet name="header">
+	         <h:outputText value="#{m.id}" />
+	       </f:facet>
+         	<h:outputText value="#{inga.id}" />
+    	</rich:column>
+  		<rich:column>
+	       <f:facet name="header">
+	         <h:outputText value="#{m.concepto}" />
+	       </f:facet>
+         	<h:outputText value="#{inga.concepto}" />
+    	</rich:column>
 	      <rich:column>
 	        <f:facet name="header">
 	          <h:outputText value="#{m.fecha}" />
@@ -49,27 +57,61 @@
 	        <f:facet name="header">
 	          <h:outputText value="#{m.encmodificar}" />
 	        </f:facet>			
+	        <center>
 	        <h:commandLink action="#{ingresosGastosBean.actualizar}">
 	            <h:graphicImage id="imagenA" border="0" alt="#{m.modificaringresogasto}" title="#{m.modificaringresogasto}" url="/images/ico_doc_editar.gif" style="border:0px;text-align: center;"/>
 	        </h:commandLink>
-	      </rich:column>
+	        </center>
+	      </rich:column>	      
 	
 	      <rich:column>
 	        <f:facet name="header">
 	          <h:outputText value="#{m.enceliminar}" />
 	        </f:facet>	
+	        <center>
 	        <h:commandLink action="#{ingresosGastosBean.eliminar}">
 	          <h:graphicImage id="imagenE" border="0" alt="#{m.eliminaringresogasto}" title="#{m.eliminaringresogasto}" url="/images/ico_doc_borrar.gif" style="border:0px;text-align: center;"/>
 	        </h:commandLink>
+	        </center>
 	      </rich:column>
 	      
 	    </rich:dataTable>
+	    	    
+	    <div class="botonera">
+			<h:commandLink action="#{ingresosGastosBean.aInsertar}" styleClass="boton insertar">
+				<h:outputText value="#{m.insertar}" />
+			</h:commandLink>
+		</div>
+        <h:outputText value="" />
+        
+        <rich:separator height="2" lineType="dotted" style="margin-top:10px;" /><br/>
+        <!-- 
+        <rich:separator height="2" lineType="dashed"/><br/>
+		<rich:separator height="4" lineType="double"/><br/>
+		<rich:separator height="2" lineType="solid"/><br/>
+		-->
+       	<rich:panel>	
+			<f:facet name="header">
+				<h:outputText value="#{m.buscar}" />
+			</f:facet>
+			<h:panelGrid columns="4" width="100%">
+			
+		        <h:outputText value="#{m.fecha} " />
+				<rich:calendar value="#{ingresosGastosBean.fechaBusqueda}" />			
+		        <h:outputText value="#{m.tipo}" />
+		        <rich:comboBox selectFirstOnUpdate="false" id="tipo" value="#{ingresosGastosBean.tipoBusqueda}" >				 		            
+			            <f:selectItems value="#{ingresosGastosBean.tipos}" />
+				</rich:comboBox>
+	        </h:panelGrid>
+	    </rich:panel>
 	    
-	    <p class="enlaceInsertar">
-		    <h:commandLink action="#{ingresosGastosBean.aInsertar}">	    
-				<h:graphicImage id="imagenI" border="0" alt="#{m.insertaringresogasto}" title="#{m.insertaringresogasto}" url="/images/ico_agregar.gif" style="border:0px;text-align: center;"/>            	
-		    </h:commandLink>
-	    </p>
+	    <div class="botonera">            
+            <h:commandLink action="#{ingresosGastosBean.buscar}" styleClass="boton buscar">
+				<h:outputText value="#{m.buscar}" />
+			</h:commandLink>
+        </div>
+		
+	    
     </h:form>			
   
   </ui:define>
