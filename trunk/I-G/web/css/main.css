@@ -514,8 +514,10 @@ p.darkred {
 }
 
 .oddRow {
-  background-color: #FFFFFF;
-  
+  background-color: #FFFFFF; 
+}
+.oddRow:hover {
+  background-color: #F3F7FB; 
 }
 
 .otherRow {
@@ -524,13 +526,16 @@ p.darkred {
 .evenRow {
   background-color: #F8F8F8;
 }
+.evenRow:hover {
+  background-color: #F1F1F1;
+}
 
 .ocean {
   background-color: cyan
 }
 
 .tableHeader {
-  width:100%;
+  /*width:100%;*/
   background-color: #E9E9E9
 }
 
@@ -751,3 +756,49 @@ h3 {
 th{
 	background-color: #344B77;
 }
+
+.botonera {
+	height: 50px;
+}
+.botonera .boton, .botonera button {
+	float: left;
+}
+.derecha {
+	float: right;
+}
+button:hover, .boton:hover {
+	cursor: pointer;
+}
+
+input:hover {
+	background-color: transparent;
+}
+
+input.boton {
+    border: 0px;
+}
+
+.derecha {
+	float: right !important;
+}
+
+/* Iconos grandes */
+button, .boton {
+	text-align: center;
+	background: transparent none;
+	border: 0px;
+	width: 100px;
+	/*font-family: Verdana, Arial, Helvetica, sans-serif;*/
+	font-size: 10px;
+	font-weight:bold;
+	color: #333333;
+	padding-top: 30px;
+	text-decoration: none;
+}
+
+/* Iconos grandes*/
+.boton.insertar { background: transparent url("../images/ico_agregar.gif") no-repeat top center; }
+.boton.actualizar{ background: transparent url("../images/view-refresh.png") no-repeat top center; }
+.boton.volver { background: transparent url("../images/go-previous.png") no-repeat top center; }
+.boton.buscar { background: transparent url("../images/system-search.png") no-repeat top center; }
+
