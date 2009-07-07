@@ -7,6 +7,7 @@ package es.antonio.duarte.servicios;
  */
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.annotation.Resource;
 
@@ -105,5 +106,35 @@ public class IngresosGastosServicioImpl implements IngresosGastosServicio{
 		
 		return ingresosGastosDAO.consultarPorId(id, IngresosGastos.class);
 	}
+	
+	/**
+	    * Consulta de ingresosgastos por fecha.
+	    * @param fecha Fecha por la cual se buscaran ingresosgastos
+	    * @return Lista de ingresosgastos que cumplen con la fecha (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection consultarPorFecha(final Date fecha) {
+	      if (fecha == null) {
+	         throw new IllegalArgumentException(mensaje);
+	      }
+	      Collection resultado = ingresosGastosDAO.consultarPorFecha(fecha);
+	      return resultado;
+	   }
+	   
+	   
+	   /**
+	    * Consulta de ingresosgastos por tipo.
+	    * @param tipo Tipo por el cual se buscaran ingresosgastos
+	    * @return Lista de ingresosgastos que cumplen con la descripcion (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection consultarPorTipo(final String tipo) {
+	      if (tipo == null) {
+	         throw new IllegalArgumentException(mensaje);
+	      }
+
+	      Collection resultado = ingresosGastosDAO.consultarPorTipo(tipo);
+	      return resultado;
+	   }
 
 }
