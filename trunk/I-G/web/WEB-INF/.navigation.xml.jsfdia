@@ -28,9 +28,9 @@
     NAME="output1" PATH="/editarIngresosGastos.jspx"
     TARGET="rules:#editarIngresosGastos.jspx" TITLE="#{ingresosGastosBean.aInsertar}:success"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{ingresosGastosBean.buscar}:#editarIngresosGastos.jspx"
-    NAME="output2" PATH="/editarIngresosGastos.jspx"
-    TARGET="rules:#editarIngresosGastos.jspx" TITLE="#{ingresosGastosBean.buscar}:success"/>
+    ID="success:#{ingresosGastosBean.buscar}:#ingresosgastos.jspx"
+    NAME="output3" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.buscar}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
