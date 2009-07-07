@@ -44,14 +44,13 @@
    <from-action>#{ingresosGastosBean.aInsertar}</from-action>
    <from-outcome>success</from-outcome>
    <to-view-id>/editarIngresosGastos.jspx</to-view-id>
-  </navigation-case>
+  </navigation-case>  
   <navigation-case>
    <from-action>#{ingresosGastosBean.buscar}</from-action>
    <from-outcome>success</from-outcome>
-   <to-view-id>/editarIngresosGastos.jspx</to-view-id>
-  </navigation-case>  
+   <to-view-id>/ingresosgastos.jspx</to-view-id>
+  </navigation-case>   
  </navigation-rule>
- 
 
   
  
