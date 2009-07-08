@@ -136,5 +136,44 @@ public class IngresosGastosServicioImpl implements IngresosGastosServicio{
 	      Collection resultado = ingresosGastosDAO.consultarPorTipo(tipo);
 	      return resultado;
 	   }
+	   
+	   /**
+	    * Consulta de ingresosgastos por cualquiera o todos los campos.
+	    * @param tipo Tipo por el cual se buscaran ingresosgastos
+	    * @param concepto Concepto por el cual se buscaran ingresosgastos
+	    * @param fecha Fecha por la cual se buscaran ingresosgastos
+	    * @param cantidad Cantidad por la cual se buscaran ingresosgastos
+	    * @return Lista de ingresosgastos que cumplen con alguno o todos los campos de busqueda (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection consultarPor(final Date fecha, final String tipo,
+			   							final String cantidad, final String concepto) {
+		   /*
+		   if (tipo == null) {
+			   throw new IllegalArgumentException(mensaje);
+		   }
+		   */
+		   
+		   Collection resultado = ingresosGastosDAO.consultarPor(fecha, tipo, cantidad, concepto);
+		   return resultado;
+	   }
+	   
+	   
+	   /**
+	    * Consulta de ingresosgastos por un mes y año.
+	    * @param mes Mes por el cual se buscaran ingresosgastos
+	    * @param anyo Año por el cual se buscaran ingresosgastos
+	    * @return Lista de ingresosgastos que cumplen con el mes y año especificado (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection consultarMesAnyo(final String mes, final String anyo){
+		   if(mes == null || anyo == null){
+			   throw new IllegalArgumentException(mensaje);
+		   }
+		   Collection resultado = ingresosGastosDAO.consultarMesAnyo(mes,anyo);
+		   return resultado;
+	   }
+
+	   
 
 }

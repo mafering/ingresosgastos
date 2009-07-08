@@ -27,4 +27,24 @@ public interface IngresosGastosDAO extends DAOGeneral{
 	    */
 	   public Collection consultarPorTipo(String tipo);
 	   
+	   /**
+	    * Consulta de ingresosgastos por alguno o todos los campos.
+	    * @param tipo Tipo por el cual se buscaran ingresosgastos
+	    * @param concepto Concepto por el cual se buscaran ingresosgastos
+	    * @param fecha Fecha por la cual se buscaran ingresosgastos
+	    * @param cantidad Cantidad por la cual se buscaran ingresosgastos
+	    * @return Lista de ingresosgastos que cumplen con alguno o todos los campos (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection consultarPor(Date fecha, String tipo, String cantidad, String concepto);
+	   
+	   /**
+	    * Consulta de ingresosgastos por el mes y año
+	    * @param mes Mes por el cual se buscaran ingresosgastos
+	    * @param anyo Año por el cual se buscaran ingresosgastos
+	    * @return Lista de ingresosgastos que cumplen con el mes y anyo especificado (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection consultarMesAnyo(String mes, String anyo);
+	   
 }

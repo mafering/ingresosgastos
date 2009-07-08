@@ -28,6 +28,28 @@
             </rich:dropDownMenu>
 
        </h:panelGrid>
+       
+       <rich:separator height="2" lineType="dashed" style="margin-top:20px;" /><br/>       
+       
+       <h:panelGrid class="vertical-menu-cell" columns="1" cellspacing="2" cellpadding="2" id="panelGridVerticalConsulta">
+       		<h:outputText value="#{m.mes}" styleClass="menuConsulta" />
+       			<rich:comboBox selectFirstOnUpdate="false" id="mes" value="#{ingresosGastosBean.mesConsulta}" >				 		            
+			            <f:selectItems value="#{ingresosGastosBean.meses}" />
+				</rich:comboBox>
+       		<h:outputText value="#{m.anyo}" styleClass="menuConsulta" />
+       			<rich:comboBox selectFirstOnUpdate="false" id="anyo" value="#{ingresosGastosBean.anyoConsulta}" >				 		            
+			            <f:selectItems value="#{ingresosGastosBean.anyos}" />
+				</rich:comboBox>
+				
+			<div class="botonera">            
+	            <h:commandLink action="#{ingresosGastosBean.consultarMesAnyo}" styleClass="boton consultar">
+					<h:outputText value="#{m.consultar}" />
+				</h:commandLink>
+			</div>
+       </h:panelGrid>
+       
+       <rich:separator height="4" lineType="double" style="margin-top:20px;" /><br/>             
+       
     </h:form>
 </ui:composition>
 

@@ -31,6 +31,14 @@
     ID="success:#{ingresosGastosBean.buscar}:#ingresosgastos.jspx"
     NAME="output3" PATH="/ingresosgastos.jspx"
     TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.buscar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.limpiar}:#ingresosgastos.jspx"
+    NAME="output2" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.limpiar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.consultarMesAnyo}:#ingresosgastos.jspx"
+    NAME="output4" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.consultarMesAnyo}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"

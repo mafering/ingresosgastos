@@ -801,4 +801,9 @@ button, .boton {
 .boton.actualizar{ background: transparent url("../images/view-refresh.png") no-repeat top center; }
 .boton.volver { background: transparent url("../images/go-previous.png") no-repeat top center; }
 .boton.buscar { background: transparent url("../images/system-search.png") no-repeat top center; }
+.boton.limpiar { background: transparent url("../images/edit-clear.png") no-repeat top center; }
+.boton.consultar { background: transparent url("../images/ico_buscar.gif") no-repeat top center; }
 
+.menuConsulta{
+	font-size: .65em;
+}
