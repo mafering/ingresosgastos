@@ -1,7 +1,9 @@
 package es.antonio.duarte.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -56,12 +58,31 @@ public class IngresosGastosBean {
 	 */
 	private IngresosGastos ingresogasto = new IngresosGastos();
 	
+	/**
+	 * La lista de tipos que se compone Ingresos y Gastos 
+	 */
 	private List<SelectItem> tipos = new ArrayList<SelectItem>();
+	
+	/**
+	 * La lista de meses  
+	 */
+	private List<SelectItem> meses = new ArrayList<SelectItem>();
+	
+	/**
+	 * La lista de años  
+	 */
+	private List<SelectItem> anyos = new ArrayList<SelectItem>();
 	
 	/**
 	 * Para indicar si se está cargando la listaIngresosGastos de una busqueda o no
 	 */
 	private boolean buscando = false;
+	
+	/**
+	 * Para indicar si se está consultando la listaIngresosGastos de un mes y año concretos 
+	 * diferentes al actual
+	 */
+	private boolean consultando = false;
 
 	/**
 	    * La fecha del ingresogasto a buscar.
@@ -72,13 +93,65 @@ public class IngresosGastosBean {
 	 */
 	private String tipoBusqueda;
 	
+	/**
+	 * El concepto del ingresogasto a buscar.
+	 */
+	private String conceptoBusqueda;
+	
+	/**
+	 * La cantidad del ingresogasto a buscar.
+	 */
+	private String cantidadBusqueda;
+	
+	/**
+	 * El mes a consultar.
+	 */
+	private String mesConsulta;
+	
+	/**
+	 * El anyo a consultar.
+	 */
+	private String anyoConsulta;
+	
 	
 	/**
 	 * @return Lista de IngresosGastos
 	 */
 	public DataModel getListaIngresosGastos() {
-		if(!buscando){
-			listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));			
+		if(!buscando && !consultando){
+			
+			Calendar hoy = new GregorianCalendar();
+			
+			if(hoy.get(Calendar.MONTH) == 0){
+				this.mesConsulta = "Enero";
+			}else if(hoy.get(Calendar.MONTH) == 1){
+				this.mesConsulta = "Febrero";
+			}else if(hoy.get(Calendar.MONTH) == 2){
+				this.mesConsulta = "Marzo";
+			}else if(hoy.get(Calendar.MONTH) == 3){
+				this.mesConsulta = "Abril";
+			}else if(hoy.get(Calendar.MONTH) == 4){
+				this.mesConsulta = "Mayo";
+			}else if(hoy.get(Calendar.MONTH) == 5){
+				this.mesConsulta = "Junio";
+			}else if(hoy.get(Calendar.MONTH) == 6){
+				this.mesConsulta = "Julio";
+			}else if(hoy.get(Calendar.MONTH) == 7){
+				this.mesConsulta = "Agosto";
+			}else if(hoy.get(Calendar.MONTH) == 8){
+				this.mesConsulta = "Septiembre";
+			}else if(hoy.get(Calendar.MONTH) == 9){
+				this.mesConsulta = "Octubre";
+			}else if(hoy.get(Calendar.MONTH) == 10){
+				this.mesConsulta = "Noviembre";
+			}else if(hoy.get(Calendar.MONTH) == 11){
+				this.mesConsulta = "Diciembre";
+			}			
+			this.anyoConsulta = new Integer(hoy.get(Calendar.YEAR)).toString();
+			
+			listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultarMesAnyo(this.mesConsulta,this.anyoConsulta)));
+			
+			//listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));			
 		}
 		return listaIngresosGastos;
 	}
@@ -112,7 +185,50 @@ public class IngresosGastosBean {
 	public String consultar(){
 		LOG.debug("En el metodo consultar() de IngresosGastosBean");
 		
-		listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));
+		Calendar hoy = new GregorianCalendar();
+						
+		if(hoy.get(Calendar.MONTH) == 0){
+			this.mesConsulta = "Enero";
+		}else if(hoy.get(Calendar.MONTH) == 1){
+			this.mesConsulta = "Febrero";
+		}else if(hoy.get(Calendar.MONTH) == 2){
+			this.mesConsulta = "Marzo";
+		}else if(hoy.get(Calendar.MONTH) == 3){
+			this.mesConsulta = "Abril";
+		}else if(hoy.get(Calendar.MONTH) == 4){
+			this.mesConsulta = "Mayo";
+		}else if(hoy.get(Calendar.MONTH) == 5){
+			this.mesConsulta = "Junio";
+		}else if(hoy.get(Calendar.MONTH) == 6){
+			this.mesConsulta = "Julio";
+		}else if(hoy.get(Calendar.MONTH) == 7){
+			this.mesConsulta = "Agosto";
+		}else if(hoy.get(Calendar.MONTH) == 8){
+			this.mesConsulta = "Septiembre";
+		}else if(hoy.get(Calendar.MONTH) == 9){
+			this.mesConsulta = "Octubre";
+		}else if(hoy.get(Calendar.MONTH) == 10){
+			this.mesConsulta = "Noviembre";
+		}else if(hoy.get(Calendar.MONTH) == 11){
+			this.mesConsulta = "Diciembre";
+		}		
+		
+		
+		this.anyoConsulta = new Integer(hoy.get(Calendar.YEAR)).toString();
+		
+		listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultarMesAnyo(this.mesConsulta,this.anyoConsulta)));
+		this.consultando = true;
+		return SUCCESS;
+	}
+	
+	/**
+	 * @return La navegación a la que va después de que el usuario hace click en el consultar 
+	 */
+	public String consultarMesAnyo(){
+		LOG.debug("En el metodo consultarMesAnyo() de IngresosGastosBean");
+		
+		listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultarMesAnyo(this.mesConsulta, this.anyoConsulta)));
+		this.consultando = true;
 		return SUCCESS;
 	}
 	
@@ -129,6 +245,12 @@ public class IngresosGastosBean {
    public void consultarPorTipo() {
       listaIngresosGastos.setWrappedData(new ArrayList(servicio
                .consultarPorTipo(tipoBusqueda)));
+   }
+   /**
+    * La consulta por cualquier campo o por todos.
+    */
+   public void consultarPor() {
+	   listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultarPor(fechaBusqueda, tipoBusqueda, cantidadBusqueda, conceptoBusqueda)));
    }
    
 	
@@ -216,11 +338,12 @@ public class IngresosGastosBean {
 	   
 	 
 	   /**
-	    * @return La navegacion a la que va despues de buscar un ingresogastos por fecha
+	    * @return La navegacion a la que va despues de buscar un ingresogastos por algun campo o todos
 	    */
 	   public String buscar() {
 	      LOG.info("Entrando en el metodo buscar(), fecha=" + fechaBusqueda);
 	      this.buscando = true;
+	      /*
 	      if (fechaBusqueda != null) {
 	         LOG.info("*** Fecha a buscar " + fechaBusqueda);
 	         listaIngresosGastos.setWrappedData(new ArrayList(servicio
@@ -232,10 +355,25 @@ public class IngresosGastosBean {
 	      }else {
 	         LOG.info("*** TODA la lista");
 	         listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));
-	      }
+	      }*/
+	      
+	      LOG.info("*** consultar por los campos que se hayan rellenado");
+	      listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultarPor(fechaBusqueda,tipoBusqueda,cantidadBusqueda,conceptoBusqueda)));
+	      
 	      //reset();
 	      return SUCCESS;
 	   }
+	   
+	   /**
+	    * @return Para limpiar el formulario de busquedas de cualquier valor
+	    */
+	   public String limpiar(){
+		   LOG.info("Entrando en el metodo limpiar()");
+		   
+		   reset();
+		   return SUCCESS;		   
+	   }
+	   
 	   
 
 	/**
@@ -257,7 +395,7 @@ public class IngresosGastosBean {
     *
     */
    private void recargar() {
-	   if(!buscando){
+	   if(!buscando && !consultando){
 		   listaIngresosGastos.setWrappedData(new ArrayList(servicio.consultar()));		   
 	   }else{
 		   
@@ -266,7 +404,12 @@ public class IngresosGastosBean {
       this.tipos = new ArrayList<SelectItem>();
       this.fechaBusqueda = null;
       this.tipoBusqueda = null;
+      this.cantidadBusqueda = null;
+      this.conceptoBusqueda = null;
+      this.anyoConsulta = null;
+      this.mesConsulta = null;
       this.buscando = false;
+      this.consultando = false;
    }
 
    /**
@@ -276,8 +419,13 @@ public class IngresosGastosBean {
       this.ingresogasto = new IngresosGastos();
       this.tipos = new ArrayList<SelectItem>();
       this.fechaBusqueda = null;
-      this.tipoBusqueda = null;
+      this.tipoBusqueda = null;      
+      this.cantidadBusqueda = null;
+      this.conceptoBusqueda = null;
+      this.anyoConsulta = null;
+      this.mesConsulta = null;
       this.buscando = false;
+      this.consultando = false;
    }
    
 	public List<SelectItem> getTipos() {
@@ -320,6 +468,90 @@ public class IngresosGastosBean {
 
 	public void setTipoBusqueda(String tipoBusqueda) {
 		this.tipoBusqueda = tipoBusqueda;
+	}
+
+	public String getConceptoBusqueda() {
+		return conceptoBusqueda;
+	}
+
+	public void setConceptoBusqueda(String conceptoBusqueda) {
+		this.conceptoBusqueda = conceptoBusqueda;
+	}
+
+	public String getCantidadBusqueda() {
+		return cantidadBusqueda;
+	}
+
+	public void setCantidadBusqueda(String cantidadBusqueda) {
+		this.cantidadBusqueda = cantidadBusqueda;
+	}
+
+	public String getMesConsulta() {
+		return mesConsulta;
+	}
+
+	public void setMesConsulta(String mesConsulta) {
+		this.mesConsulta = mesConsulta;
+	}
+
+	public String getAnyoConsulta() {
+		return anyoConsulta;
+	}
+
+	public void setAnyoConsulta(String anyoConsulta) {
+		this.anyoConsulta = anyoConsulta;
+	}
+
+	public boolean isConsultando() {
+		return consultando;
+	}
+
+	public void setConsultando(boolean consultando) {
+		this.consultando = consultando;
+	}
+
+	public List<SelectItem> getMeses() {
+		
+		this.meses = new ArrayList<SelectItem>();
+		this.meses.add(new SelectItem("Enero"));
+		this.meses.add(new SelectItem("Febrero"));
+		this.meses.add(new SelectItem("Marzo"));
+		this.meses.add(new SelectItem("Abril"));
+		this.meses.add(new SelectItem("Mayo"));
+		this.meses.add(new SelectItem("Junio"));
+		this.meses.add(new SelectItem("Julio"));
+		this.meses.add(new SelectItem("Agosto"));
+		this.meses.add(new SelectItem("Septiembre"));
+		this.meses.add(new SelectItem("Octubre"));
+		this.meses.add(new SelectItem("Noviembre"));
+		this.meses.add(new SelectItem("Diciembre"));
+		
+		return meses;
+	}
+
+	public void setMeses(List<SelectItem> meses) {
+		this.meses = meses;
+	}
+
+	public List<SelectItem> getAnyos() {
+		this.anyos = new ArrayList<SelectItem>();
+		
+		Calendar calendario = GregorianCalendar.getInstance();
+				
+		/**
+		 * Se tiene en cuenta desde el año 2006 en adelante
+		 */
+		for(int a=2006;a<=calendario.get(Calendar.YEAR);a++){
+			this.anyos.add(new SelectItem(a));
+		}
+		
+		//this.anyos.add(new SelectItem(calendario.getTime().getYear()));		
+		
+		return anyos;
+	}
+
+	public void setAnyos(List<SelectItem> anyos) {
+		this.anyos = anyos;
 	}
 	
 

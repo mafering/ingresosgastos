@@ -16,7 +16,8 @@
 
   <h:form>
   <h:messages styleClass="errorText"/>
-	<rich:datascroller for="listaIG" maxPages="5" />	
+	<rich:datascroller for="listaIG" maxPages="10" />
+		<center>	
 	    <rich:dataTable id="listaIG" value="#{ingresosGastosBean.listaIngresosGastos}" rows="10" var="inga" rowClasses="oddRow, evenRow" headerClass="tableHeader"	    	                    
                     cellpadding="0" cellspacing="0" border="0"
 	    	>
@@ -37,7 +38,7 @@
 	          <h:outputText value="#{m.fecha}" />
 	        </f:facet>
 	          <h:outputText value="#{inga.fecha}">            
-	            <f:convertDateTime type="date" dateStyle="medium" pattern="dd-MM-yyyy"/>
+	            <f:convertDateTime type="date" locale="es/ES" pattern="dd-MM-yyyy"/>
 	          </h:outputText>
 	      </rich:column>
 	      <rich:column>
@@ -76,7 +77,7 @@
 	      </rich:column>
 	      
 	    </rich:dataTable>
-	    	    
+		</center>	    	    
 	    <div class="botonera">
 			<h:commandLink action="#{ingresosGastosBean.aInsertar}" styleClass="boton insertar">
 				<h:outputText value="#{m.insertar}" />
@@ -97,17 +98,32 @@
 			<h:panelGrid columns="4" width="100%">
 			
 		        <h:outputText value="#{m.fecha} " />
-				<rich:calendar value="#{ingresosGastosBean.fechaBusqueda}" />			
+				<rich:calendar value="#{ingresosGastosBean.fechaBusqueda}"  locale="es/ES"  datePattern="dd-MM-yyyy" >
+					<rich:ajaxValidator event="oninputblur" />
+				</rich:calendar>			
+		        
 		        <h:outputText value="#{m.tipo}" />
 		        <rich:comboBox selectFirstOnUpdate="false" id="tipo" value="#{ingresosGastosBean.tipoBusqueda}" >				 		            
 			            <f:selectItems value="#{ingresosGastosBean.tipos}" />
 				</rich:comboBox>
+				
+				<h:outputText value="#{m.cantidad}" />
+				<h:inputText id="cantidad" value="#{ingresosGastosBean.cantidadBusqueda}">
+					<f:validateDoubleRange minimum="0" maximum="10000000"/>
+				</h:inputText>
+
+				<h:outputText value="#{m.concepto}" />
+				<h:inputText id="concepto" value="#{ingresosGastosBean.conceptoBusqueda}" />					
+				
 	        </h:panelGrid>
 	    </rich:panel>
 	    
 	    <div class="botonera">            
             <h:commandLink action="#{ingresosGastosBean.buscar}" styleClass="boton buscar">
 				<h:outputText value="#{m.buscar}" />
+			</h:commandLink>
+            <h:commandLink action="#{ingresosGastosBean.limpiar}" styleClass="boton limpiar">
+				<h:outputText value="#{m.limpiar}" />
 			</h:commandLink>
         </div>
 		

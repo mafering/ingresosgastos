@@ -41,7 +41,9 @@
 	            </h:outputLabel>
 	        </h:column>
 	        <h:column>
-	            <rich:calendar id="fecha" required="false" value="#{ingresosGastosBean.ingresogasto.fecha}" />
+	            <rich:calendar id="fecha" required="false" value="#{ingresosGastosBean.ingresogasto.fecha}" locale="es/ES"  datePattern="dd-MM-yyyy" >
+	            	<rich:ajaxValidator event="oninputblur" />
+	            </rich:calendar>
 			</h:column>
 			<h:column>	            
 	             <rich:message for="fecha">
