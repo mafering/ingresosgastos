@@ -807,3 +807,15 @@ button, .boton {
 .menuConsulta{
 	font-size: .65em;
 }
+.totalesLabel{
+	border-color: white;
+	cursor:default;
+	background-color: #E1E6EC;
+	text-align: left;	
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.totalesValor{
+	font-size: 1.5em;	
+	font-weight: bold;
+}

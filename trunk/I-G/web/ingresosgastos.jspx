@@ -9,7 +9,12 @@
   xmlns:c="http://java.sun.com/jsp/jstl/core"  
   xmlns:rich="http://richfaces.org/rich">
 <ui:composition template="/layout/layout.xhtml">
-  <ui:define name="title">#{m.tituloingresosgastos}</ui:define>
+  <ui:define name="title">  				
+		<h:outputText value="#{m.tituloingresosgastos}" />(	 	
+		<h:outputText value="#{ingresosGastosBean.mesConsulta}" />		
+		<h:outputText value="#{ingresosGastosBean.anyoConsulta}" />
+		)			
+  </ui:define>
   <ui:define name="content">
   
   <f:loadBundle basename="es.antonio.duarte.resources.mensajes" var="m" />
@@ -91,33 +96,53 @@
 		<rich:separator height="4" lineType="double"/><br/>
 		<rich:separator height="2" lineType="solid"/><br/>
 		-->
-       	<rich:panel>	
-			<f:facet name="header">
-				<h:outputText value="#{m.buscar}" />
-			</f:facet>
-			<h:panelGrid columns="4" width="100%">
-			
-		        <h:outputText value="#{m.fecha} " />
-				<rich:calendar value="#{ingresosGastosBean.fechaBusqueda}"  locale="es/ES"  datePattern="dd-MM-yyyy" >
-					<rich:ajaxValidator event="oninputblur" />
-				</rich:calendar>			
-		        
-		        <h:outputText value="#{m.tipo}" />
-		        <rich:comboBox selectFirstOnUpdate="false" id="tipo" value="#{ingresosGastosBean.tipoBusqueda}" >				 		            
-			            <f:selectItems value="#{ingresosGastosBean.tipos}" />
-				</rich:comboBox>
+		<h:panelGrid columns="2" width="100%">		
+	       	<rich:panel>	
+				<f:facet name="header">
+					<h:outputText value="#{m.buscar}" />
+				</f:facet>
+				<h:panelGrid columns="4" width="100%" cellspadding="5" cellspacing="5" >
 				
-				<h:outputText value="#{m.cantidad}" />
-				<h:inputText id="cantidad" value="#{ingresosGastosBean.cantidadBusqueda}">
-					<f:validateDoubleRange minimum="0" maximum="10000000"/>
-				</h:inputText>
-
-				<h:outputText value="#{m.concepto}" />
-				<h:inputText id="concepto" value="#{ingresosGastosBean.conceptoBusqueda}" />					
+			        <h:outputText value="#{m.fecha} " />
+					<rich:calendar value="#{ingresosGastosBean.fechaBusqueda}"  locale="es/ES"  datePattern="dd-MM-yyyy" >
+						<rich:ajaxValidator event="oninputblur" />
+					</rich:calendar>			
+			        
+			        <h:outputText value="#{m.tipo}" />
+			        <rich:comboBox selectFirstOnUpdate="false" id="tipo" value="#{ingresosGastosBean.tipoBusqueda}" >				 		            
+				            <f:selectItems value="#{ingresosGastosBean.tipos}" />
+					</rich:comboBox>
+					
+					<h:outputText value="#{m.cantidad}" />
+					<h:inputText id="cantidad" value="#{ingresosGastosBean.cantidadBusqueda}">
+						<f:validateDoubleRange minimum="0" maximum="10000000"/>
+					</h:inputText>
+	
+					<h:outputText value="#{m.concepto}" />
+					<h:inputText id="concepto" value="#{ingresosGastosBean.conceptoBusqueda}" />					
+					<h:outputText value="" />
+					<h:outputText value="" />
+					
+		        </h:panelGrid>
+		    </rich:panel>
+		    <rich:panel>	
+				<f:facet name="header">
+					<h:outputText value="#{m.totales}" />
+				</f:facet>
+				<h:panelGrid columns="3" width="100%" cellspadding="5" cellspacing="5">
+					<h:outputText value="#{m.ingresos}" styleClass="totalesLabel" style="color:green;" />
+					<h:outputText value="#{ingresosGastosBean.ingresosTotales }" styleClass="totalesValor" style="color:green;" />
+					<h:outputText value="€" style="font-size:10px;" />
+					<h:outputText value="#{m.gastos}" styleClass="totalesLabel" style="color:red;" />
+					<h:outputText value="#{ingresosGastosBean.gastosTotales }" styleClass="totalesValor" style="color:red;" />
+					<h:outputText value="€" style="font-size:10px;" />
+					<h:outputText value="#{m.resultados}" styleClass="totalesLabel" />
+					<h:outputText value="#{ingresosGastosBean.resultadosTotales }" styleClass="totalesValor" />			
+					<h:outputText value="€" style="font-size:10px;" />
+				</h:panelGrid>
 				
-	        </h:panelGrid>
-	    </rich:panel>
-	    
+			</rich:panel>
+	    </h:panelGrid>
 	    <div class="botonera">            
             <h:commandLink action="#{ingresosGastosBean.buscar}" styleClass="boton buscar">
 				<h:outputText value="#{m.buscar}" />

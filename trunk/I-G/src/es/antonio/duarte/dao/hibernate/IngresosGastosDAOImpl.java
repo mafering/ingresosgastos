@@ -114,15 +114,8 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 		   List resultados = null;
 		   IngresosGastos ig = new IngresosGastos();
 		   int d = 1;
-		   int a;
-		   int m = GregorianCalendar.getInstance().get(Calendar.MONTH);
-		   
-		   if(anyo != null && !anyo.equalsIgnoreCase("")){
-			   a = Integer.parseInt(anyo);
-		   }else{
-			   a = GregorianCalendar.getInstance().get(Calendar.YEAR);
-		   }
-		   
+		   int a = 2006;
+		   int m = 0;
 		   
 		   Criteria criterios = getSessionFactory().getCurrentSession().createCriteria(
 				   IngresosGastos.class);
