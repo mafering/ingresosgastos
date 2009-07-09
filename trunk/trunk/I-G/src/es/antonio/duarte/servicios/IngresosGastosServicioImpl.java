@@ -167,9 +167,9 @@ public class IngresosGastosServicioImpl implements IngresosGastosServicio{
 	    *         registros)
 	    */
 	   public Collection consultarMesAnyo(final String mes, final String anyo){
-		   if(mes == null || anyo == null){
-			   throw new IllegalArgumentException(mensaje);
-		   }
+		   /**
+		    * Permitimos que el mes o el año o ambos puedan ser nulos
+		    */
 		   Collection resultado = ingresosGastosDAO.consultarMesAnyo(mes,anyo);
 		   return resultado;
 	   }
