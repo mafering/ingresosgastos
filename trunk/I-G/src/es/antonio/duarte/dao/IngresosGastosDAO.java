@@ -47,4 +47,15 @@ public interface IngresosGastosDAO extends DAOGeneral{
 	    */
 	   public Collection consultarMesAnyo(String mes, String anyo);
 	   
+	   /**
+	    * Calcular ingresos o gastos totales por mes del año
+	    * @param anyo Año por el cual se calcularan los ingresos o gastos totales
+	    * @param tipo Tipo por el cual se calcularan los ingresos o gastos totales
+	    * @return Lista de ingresos o gastos de todos los meses para el anyo especificado (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection calcularIngresosGastosAnuales(String anyo,String tipo);
+
+	   
+	   
 }

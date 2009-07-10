@@ -54,7 +54,7 @@ body {
 #right {
   position: absolute;
   right: 10px;
-  top: 134px;
+  top: 50px;
   width: 200px;
   border: 2px solid #666666;
   background-color: #E9E9E9;
@@ -65,7 +65,7 @@ body {
 }
 
 #footer {
-  margin-top: 15px;
+  margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 10px;

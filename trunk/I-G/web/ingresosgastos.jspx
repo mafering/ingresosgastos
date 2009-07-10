@@ -103,22 +103,22 @@
 				</f:facet>
 				<h:panelGrid columns="4" width="100%" cellspadding="5" cellspacing="5" >
 				
-			        <h:outputText value="#{m.fecha} " />
+			        <h:outputText value="#{m.fecha} " style="font-size:10px;" />
 					<rich:calendar value="#{ingresosGastosBean.fechaBusqueda}"  locale="es/ES"  datePattern="dd-MM-yyyy" >
 						<rich:ajaxValidator event="oninputblur" />
 					</rich:calendar>			
 			        
-			        <h:outputText value="#{m.tipo}" />
+			        <h:outputText value="#{m.tipo}" style="font-size:10px;" />
 			        <rich:comboBox selectFirstOnUpdate="false" id="tipo" value="#{ingresosGastosBean.tipoBusqueda}" >				 		            
 				            <f:selectItems value="#{ingresosGastosBean.tipos}" />
 					</rich:comboBox>
 					
-					<h:outputText value="#{m.cantidad}" />
+					<h:outputText value="#{m.cantidad}" style="font-size:10px;" />
 					<h:inputText id="cantidad" value="#{ingresosGastosBean.cantidadBusqueda}">
 						<f:validateDoubleRange minimum="0" maximum="10000000"/>
 					</h:inputText>
 	
-					<h:outputText value="#{m.concepto}" />
+					<h:outputText value="#{m.concepto}" style="font-size:10px;" />
 					<h:inputText id="concepto" value="#{ingresosGastosBean.conceptoBusqueda}" />					
 					<h:outputText value="" />
 					<h:outputText value="" />

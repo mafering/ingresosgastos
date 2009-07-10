@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:a4j="http://richfaces.org/a4j"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"  
+  xmlns:rich="http://richfaces.org/rich">
+<ui:composition template="/layout/layout.xhtml">
+  <ui:define name="title">  				
+		<h:outputText value="#{m.resultados}" />(
+		<h:outputText value="#{ingresosGastosBean.anyoConsulta}" />
+		)			
+  </ui:define>
+  <ui:define name="content">
+  
+  <f:loadBundle basename="es.antonio.duarte.resources.mensajes" var="m" />
+
+  <h:form>
+  <h:messages styleClass="errorText"/>
+	
+	<rich:dataTable rowClasses="oddRow, evenRow" headerClass="tableHeader" cellpadding="0" cellspacing="0" 
+                    width="100%" border="0" var="ig" value="">                
+                    <f:facet name="header" styleClass="tableHeader">
+                        <rich:columnGroup>
+                            <rich:column colspan="4">
+                                <h:outputText value="#{m.resultados}" />
+                            </rich:column>
+                            <rich:column breakBefore="true">
+                                <h:outputText value="#{m.mes}" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{m.ingresos }" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{m.gastos }" />
+                            </rich:column>                            
+                            <rich:column>
+                                <h:outputText value="#{m.totales }" />
+                            </rich:column>
+                        </rich:columnGroup>
+                    </f:facet>
+                    
+                    <f:facet name="footer">
+                    	<rich:columnGroup>
+                            <rich:column>
+                                <h:outputText value="#{m.total }" />                            	
+							</rich:column>
+                            <rich:column style="text-align:center;color:green;">
+                                <h:outputText value="000.00" />
+                                <h:outputText value="#{ingresosGastosBean.totalIngresosAnual }" style="margin-left:5px;" />
+                            </rich:column>
+                            <rich:column style="text-align:center;color:red;">
+                                <h:outputText value="#{ingresosGastosBean.totalGastosAnual }" />
+                                <h:outputText value="€" style="margin-left:5px;" />
+                            </rich:column>
+                            <rich:column style="text-align:center;font-weight:bold;">
+                                <h:outputText value="#{ingresosGastosBean.totalResultadosAnual }" />
+                                <h:outputText value="€" style="margin-left:5px;" />
+                            </rich:column>                            
+                        </rich:columnGroup>
+                    </f:facet>        
+                    
+     </rich:dataTable>
+                  
+        <!-- 
+        <rich:separator height="2" lineType="dotted" style="margin-top:10px;" /><br/>
+        <rich:separator height="2" lineType="dashed"/><br/>
+		<rich:separator height="4" lineType="double"/><br/>
+		<rich:separator height="2" lineType="solid"/><br/>
+		-->
+	
+	    
+    </h:form>			
+  
+  </ui:define>
+</ui:composition>
+
+</html>

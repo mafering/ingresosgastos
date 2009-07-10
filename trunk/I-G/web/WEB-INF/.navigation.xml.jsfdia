@@ -39,6 +39,10 @@
     ID="success:#{ingresosGastosBean.consultarMesAnyo}:#ingresosgastos.jspx"
     NAME="output4" PATH="/ingresosgastos.jspx"
     TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.consultarMesAnyo}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.aResultados}:#resultados.jspx"
+    NAME="output5" PATH="/resultados.jspx"
+    TARGET="rules:#resultados.jspx" TITLE="#{ingresosGastosBean.aResultados}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
@@ -58,4 +62,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#logout.jspx"
   PATH="/logout.jspx" SHAPE="240,177,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#resultados.jspx"
+  PATH="/resultados.jspx" SHAPE="576,289,0,0"/>
 </PROCESS>
