@@ -1,9 +1,12 @@
 package es.antonio.duarte.dao.hibernate;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -117,6 +120,14 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 		   int a = 2006;
 		   int m = 0;
 		   
+		   if(anyo == null || anyo.equalsIgnoreCase("")){
+			   Calendar hoy = GregorianCalendar.getInstance();
+			   anyo = String.valueOf(hoy.get(Calendar.YEAR));
+			   a = hoy.get(Calendar.YEAR);
+		   }else{
+			   a = Integer.parseInt(anyo);
+		   }
+		   
 		   Criteria criterios = getSessionFactory().getCurrentSession().createCriteria(
 				   IngresosGastos.class);
 		   
@@ -174,6 +185,70 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 		   ;
 		   resultados = criterios.list();
 		   return resultados;
+	   }
+	   
+	   
+	   /**
+	    * Calculo de ingresos o gastos totales para todos los meses del año pasado.
+	    * @param anyo Año para el que se calculan los ingresos o gastos totales en cada mes
+	    * @param tipo Tipo para el que se calculan los ingresos o gastos totales en cada mes
+	    * @return Lista de ingresos o gastos totales para cada mes del año pasado(vacia si no hay
+	    *         registros)
+	    */
+	   public Collection calcularIngresosGastosAnuales(String anyo, String tipo){
+		   List resultados = null;
+		   List totales = new ArrayList(11);
+		   Calendar fechaInicial = null;
+		   Calendar fechaFinal = null;
+		   int d=28;
+		   int a=2006;
+		   BigDecimal tot = new BigDecimal(0);
+		   
+		   if(anyo == null || anyo.equalsIgnoreCase("")){
+			   Calendar hoy = GregorianCalendar.getInstance();
+			   anyo = String.valueOf(hoy.get(Calendar.YEAR));
+			   a = hoy.get(Calendar.YEAR);
+		   }else{
+			   a = Integer.parseInt(anyo);
+		   }
+		   
+		   IngresosGastos ig = new IngresosGastos();
+		   /**
+		    * Buscaremos todos los ingresos o gastos desde el 1 de Enero hasta el 31 de Diciembre
+		    */
+		   Criteria criterios = getSessionFactory().getCurrentSession().createCriteria(
+				   IngresosGastos.class);
+
+		   for(int i=0;i<12;i++){
+
+			   if(i==0 || i==2 || i==4 || i==6 || i==8 || i==10 || i==11){
+				 d = 31;  
+			   }else if(i==1){
+				   if ( ( ( ( a % 4 ) == 0 ) && ( ( a % 100 ) ) != 100 ) || ( ( a % 400 ) == 0 ) ) {
+					   d = 29;
+				   }else{	
+					   d = 28;
+				   }	
+			   }else{
+				   d = 30;
+			   }
+			   fechaInicial = new GregorianCalendar(Integer.parseInt(anyo),i ,1);
+			   fechaFinal = new GregorianCalendar(Integer.parseInt(anyo),i,d);	   
+			   
+			   criterios.add(Expression.between("fecha", new java.sql.Date(fechaInicial.getTimeInMillis()),
+					   new java.sql.Date(fechaFinal.getTimeInMillis())));
+			   
+			   criterios.add(Expression.eq("tipo", tipo));
+			   resultados = criterios.list();
+			   for (Iterator iterator = resultados.iterator(); iterator.hasNext();) {
+				IngresosGastos inga = (IngresosGastos) iterator.next();
+				tot = tot.add(new BigDecimal(inga.getCantidad()));
+			   }			   
+			   totales.set(i, tot);			   
+		   }	   
+		   
+		   return totales;
+		   
 	   }
 	   
 	

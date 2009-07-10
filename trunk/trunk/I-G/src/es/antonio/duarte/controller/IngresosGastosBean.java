@@ -135,6 +135,45 @@ public class IngresosGastosBean {
 	 */
 	private BigDecimal resultadosTotales = new BigDecimal(0);
 	
+	/**
+	 * Ingresos Totales Por Meses
+	 * listaIngresosMeses[0] = ingresos totales del Mes de Enero
+	 * listaIngresosMeses[1] = ingresos totales del Mes de Febrero
+	 * etc
+	 */
+	private List<BigDecimal> listaIngresosMeses = new ArrayList<BigDecimal>(11);
+		
+	/**
+	 * Gastos Totales Por Meses
+	 * listaGastosMeses[0] = gastos totales del Mes de Enero
+	 * listaGastosMeses[1] = gastos totales del Mes de Febrero
+	 * etc
+	 */
+	private List<BigDecimal> listaGastosMeses = new ArrayList<BigDecimal>(11);
+	
+	/**
+	 * Resultados Totales Por Meses
+	 * listaResultadosMeses[0] = resultados totales del Mes de Enero
+	 * listaResultadosMeses[1] = resultados totales del Mes de Febrero
+	 * etc
+	 */
+	private List<BigDecimal> listaResultadosMeses = new ArrayList<BigDecimal>(11);
+	
+	/**
+	 * Total Ingresos Anual
+	 */
+	private BigDecimal totalIngresosAnual = new BigDecimal(0);
+	
+	/**
+	 * Total Gastos Anual
+	 */
+	private BigDecimal totalGastosAnual = new BigDecimal(0);
+	
+	/**
+	 * Total Resultados Anual
+	 */
+	private BigDecimal totalResultadosAnual = new BigDecimal(0);
+	
 	
 	/**
 	 * @return Lista de IngresosGastos
@@ -482,8 +521,61 @@ public class IngresosGastosBean {
 	      return SUCCESS;
 	   }
 	   
-	 
 	   /**
+	    * @return La navegacion a la que se dirige despues de seleccionar el enlace 
+	    *         para insertar un ingreso gasto
+	    */
+	   public String aResultados() {
+		   if (LOG.isTraceEnabled()) {
+			   LOG.info("entrando en el metodo aResultados() de IngresosGastosBean");
+		   }	      
+		   LOG.info("Vamos a navegar a la pagina de resultados");
+		   //reset();
+		   
+		   calcularTotalesAnuales();
+		   
+		   return SUCCESS;
+	   }
+	   
+	 /**
+	  * Se calculan los totales anuales para cada mes y la suma de todos ellos tanto por los 
+	  * ingresos como los gastos y los resultados totales
+	  */
+	   private void calcularTotalesAnuales() {
+		   
+		   this.listaIngresosMeses = new ArrayList(servicio.calcularIngresosGastosAnuales(this.anyoConsulta,"Ingreso"));
+		   this.listaGastosMeses = new ArrayList<BigDecimal>(servicio.calcularIngresosGastosAnuales(this.anyoConsulta,"Gasto"));
+		   
+		   if(this.listaIngresosMeses != null && this.listaGastosMeses != null){
+			   for(int i=0;i<this.listaIngresosMeses.size();i++){
+				   
+				   /**
+				    * Acumulamos para el total de Ingresos Anual
+				    */
+				   this.totalIngresosAnual = this.totalIngresosAnual.add(this.listaIngresosMeses.get(i));
+				   
+				   /**
+				    * Acumulamos para el total de Gastos Anual
+				    */				   
+				   this.totalGastosAnual = this.totalGastosAnual.add(this.listaGastosMeses.get(i));
+				   
+				   /**
+				    * Vamos calculando los resultados mensuales restando los gastos a los ingresos por cada mes
+				    */
+				   this.listaResultadosMeses.set(i, (this.listaIngresosMeses.get(i)).subtract(this.listaGastosMeses.get(i)));				   
+			   }
+		   }else{
+			   this.totalIngresosAnual = new BigDecimal(0);
+			   this.totalGastosAnual = new BigDecimal(0);			   
+		   }
+		   this.totalResultadosAnual = this.totalIngresosAnual.subtract(this.totalGastosAnual);
+		   		   
+		   this.totalIngresosAnual.setScale(2, BigDecimal.ROUND_HALF_UP);
+		   this.totalGastosAnual.setScale(2, BigDecimal.ROUND_HALF_UP);
+		   this.totalResultadosAnual.setScale(2, BigDecimal.ROUND_HALF_UP);		   
+	   }
+
+	/**
 	    * @return La navegacion a la que va despues de buscar un ingresogastos por algun campo o todos
 	    */
 	   public String buscar() {
@@ -551,6 +643,9 @@ public class IngresosGastosBean {
 	   }
       this.ingresogasto = new IngresosGastos();
       this.tipos = new ArrayList<SelectItem>();
+      this.listaGastosMeses = new ArrayList<BigDecimal>(11);
+      this.listaIngresosMeses = new ArrayList<BigDecimal>(11);
+      this.listaResultadosMeses = new ArrayList<BigDecimal>(11);
       this.fechaBusqueda = null;
       this.tipoBusqueda = null;
       this.cantidadBusqueda = null;
@@ -567,6 +662,9 @@ public class IngresosGastosBean {
    private void reset() {      
       this.ingresogasto = new IngresosGastos();
       this.tipos = new ArrayList<SelectItem>();
+      this.listaGastosMeses = new ArrayList<BigDecimal>(11);
+      this.listaIngresosMeses = new ArrayList<BigDecimal>(11);
+      this.listaResultadosMeses = new ArrayList<BigDecimal>(11);
       this.fechaBusqueda = null;
       this.tipoBusqueda = null;      
       this.cantidadBusqueda = null;
@@ -578,6 +676,9 @@ public class IngresosGastosBean {
       this.ingresosTotales = new BigDecimal(0);
       this.gastosTotales = new BigDecimal(0);
       this.resultadosTotales = new BigDecimal(0);
+      this.totalGastosAnual = new BigDecimal(0);
+      this.totalIngresosAnual = new BigDecimal(0);
+      this.totalResultadosAnual = new BigDecimal(0);
    }
    
 	public List<SelectItem> getTipos() {
@@ -752,6 +853,54 @@ public class IngresosGastosBean {
 			this.gastosTotales.setScale(3, BigDecimal.ROUND_HALF_UP);
 			this.resultadosTotales.setScale(3, BigDecimal.ROUND_HALF_UP);
 		}
+	}
+
+	public List<BigDecimal> getListaIngresosMeses() {
+		return listaIngresosMeses;
+	}
+
+	public void setListaIngresosMeses(List<BigDecimal> listaIngresosMeses) {
+		this.listaIngresosMeses = listaIngresosMeses;
+	}
+
+	public List<BigDecimal> getListaGastosMeses() {
+		return listaGastosMeses;
+	}
+
+	public void setListaGastosMeses(List<BigDecimal> listaGastosMeses) {
+		this.listaGastosMeses = listaGastosMeses;
+	}
+
+	public List<BigDecimal> getListaResultadosMeses() {
+		return listaResultadosMeses;
+	}
+
+	public void setListaResultadosMeses(List<BigDecimal> listaResultadosMeses) {
+		this.listaResultadosMeses = listaResultadosMeses;
+	}
+
+	public BigDecimal getTotalIngresosAnual() {
+		return totalIngresosAnual;
+	}
+
+	public void setTotalIngresosAnual(BigDecimal totalIngresosAnual) {
+		this.totalIngresosAnual = totalIngresosAnual;
+	}
+
+	public BigDecimal getTotalGastosAnual() {
+		return totalGastosAnual;
+	}
+
+	public void setTotalGastosAnual(BigDecimal totalGastosAnual) {
+		this.totalGastosAnual = totalGastosAnual;
+	}
+
+	public BigDecimal getTotalResultadosAnual() {
+		return totalResultadosAnual;
+	}
+
+	public void setTotalResultadosAnual(BigDecimal totalResultadosAnual) {
+		this.totalResultadosAnual = totalResultadosAnual;
 	}
 
 }

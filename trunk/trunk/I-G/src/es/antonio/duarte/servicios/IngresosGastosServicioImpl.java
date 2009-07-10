@@ -173,6 +173,24 @@ public class IngresosGastosServicioImpl implements IngresosGastosServicio{
 		   Collection resultado = ingresosGastosDAO.consultarMesAnyo(mes,anyo);
 		   return resultado;
 	   }
+	   
+	   /**
+	    * Calculo de ingresos o gastos totales por mes de un año.
+	    * @param anyo Año por el cual se calcularan los ingresos o gastos totales
+	    * @param tipo Tipo por el cual se calcularan los ingresos o gastos totales
+	    * @return Lista de ingresos o gastos para cada mes del año especificado (vacia si no hay
+	    *         registros)
+	    */
+	   public Collection calcularIngresosGastosAnuales(final String anyo, final String tipo){
+		   /**
+		    * Permitimos que el año pueda ser nulo porque se controlará en la capa de datos
+		    */
+		   Collection resultado = ingresosGastosDAO.calcularIngresosGastosAnuales(anyo,tipo);
+		   
+		   return resultado;		   
+	   }
+	   
+	   
 
 	   
 

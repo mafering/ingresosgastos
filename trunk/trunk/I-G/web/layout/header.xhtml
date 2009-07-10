@@ -21,7 +21,7 @@
 .barra {
   position: absolute;
   left: 200px;
-  top: 105px;
+  top: 75px;
 }
 </style>
 
@@ -57,19 +57,26 @@
             action="#{ingresosGastosBean.consultar}" id="menuItem0Header"
             icon="/images/create_doc.gif">
           </rich:menuItem>
+          <rich:menuItem value="#{m.resultados}"
+            action="#{ingresosGastosBean.aResultados}" id="menuItem1Header"
+            icon="/images/accessories-text-editor.png">
+          </rich:menuItem>
         </rich:dropDownMenu>
         
 
         <rich:dropDownMenu value="#{m.menuinformes}"
           id="dropDownMenu2Header">
+          <!-- 
           <rich:menuItem value="#{m.generarinforme}"
             action="#{informesBean.generarInforme}" id="menuItem2Header"
             icon="/images/create_doc.gif" />
+            -->
         </rich:dropDownMenu>
 
         <rich:dropDownMenu value="#{m.menulogout}" id="dropDownMenu3Header">
           <rich:menuItem value="#{m.menulogout}" action="#{logoutBean.logout}"
-            id="menuItem3Header" />
+            id="menuItem3Header" icon="/images/system-log-out.png" >
+            </rich:menuItem>
         </rich:dropDownMenu>
       </rich:toolBar>
     </h:panelGrid>

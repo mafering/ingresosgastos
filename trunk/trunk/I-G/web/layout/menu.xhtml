@@ -16,31 +16,39 @@
         <h:panelGrid class="vertical-menu-cell" columns="1" cellspacing="0" cellpadding="0" id="panelGridVerticalMenu">
 
             <rich:dropDownMenu value="#{m.menuinfogeneral}" direction="bottom-right" jointPoint="tr" id="dropDownMenu1" style="border:1px solid #E9E9E9" >
-                <rich:menuItem value="#{m.encingresosgastos}" action="#{ingresosGastosBean.consultar}" id="menuItem1"/>
+                <rich:menuItem value="#{m.encingresosgastos}" action="#{ingresosGastosBean.consultar}" id="menuItem1" icon="/images/create_doc.gif" >
+                </rich:menuItem>
+                <rich:menuItem value="#{m.resultados}" action="#{ingresosGastosBean.aResultados}" id="menuItem2" icon="/images/accessories-text-editor.png">
+                </rich:menuItem>
+                
             </rich:dropDownMenu>
 
             <rich:dropDownMenu value="#{m.menuinformes}" direction="bottom-right" jointPoint="tr" id="dropDownMenu3">
+            <!-- 
                 <rich:menuItem value="#{m.generarinforme}" action="#{informesBean.generarInforme}" id="menuItem3"/>
+                -->
             </rich:dropDownMenu>
 
             <rich:dropDownMenu value="#{m.menulogout}" direction="bottom-right" jointPoint="tr" id="dropDownMenu4">
-                <rich:menuItem value="#{m.menulogout}" action="#{logoutBean.logout}" id="menuItem4"/>
+                <rich:menuItem value="#{m.menulogout}" action="#{logoutBean.logout}" id="menuItem4" icon="/images/system-log-out.png" >
+                
+                </rich:menuItem>
             </rich:dropDownMenu>
 
        </h:panelGrid>
        
-       <rich:separator height="2" lineType="dashed" style="margin-top:20px;" /><br/>       
+       <rich:separator height="2" lineType="dashed" style="margin-top:20px;" /><br/>
        
        <h:panelGrid class="vertical-menu-cell" columns="1" cellspacing="2" cellpadding="2" id="panelGridVerticalConsulta">
-       		<h:outputText value="#{m.mes}" styleClass="menuConsulta" />
-       			<rich:comboBox selectFirstOnUpdate="false" id="mes" value="#{ingresosGastosBean.mesConsulta}" >				 		            
-			            <f:selectItems value="#{ingresosGastosBean.meses}" />
-				</rich:comboBox>
-       		<h:outputText value="#{m.anyo}" styleClass="menuConsulta" />
-       			<rich:comboBox selectFirstOnUpdate="false" id="anyo" value="#{ingresosGastosBean.anyoConsulta}" >				 		            
-			            <f:selectItems value="#{ingresosGastosBean.anyos}" />
-				</rich:comboBox>
-				
+     		<h:outputText value="#{m.mes}" styleClass="menuConsulta" />
+   			<rich:comboBox selectFirstOnUpdate="false" id="mes" value="#{ingresosGastosBean.mesConsulta}" >				 		            
+            	<f:selectItems value="#{ingresosGastosBean.meses}" />
+			</rich:comboBox>
+     		<h:outputText value="#{m.anyo}" styleClass="menuConsulta" />
+   			<rich:comboBox selectFirstOnUpdate="false" id="anyo" value="#{ingresosGastosBean.anyoConsulta}" >				 		            
+            	<f:selectItems value="#{ingresosGastosBean.anyos}" />
+			</rich:comboBox>
+			
 			<div class="botonera">            
 	            <h:commandLink action="#{ingresosGastosBean.consultarMesAnyo}" styleClass="boton consultar">
 					<h:outputText value="#{m.consultar}" />
