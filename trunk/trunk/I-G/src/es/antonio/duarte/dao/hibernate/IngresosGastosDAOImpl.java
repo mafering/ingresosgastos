@@ -216,8 +216,6 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 		   /**
 		    * Buscaremos todos los ingresos o gastos desde el 1 de Enero hasta el 31 de Diciembre
 		    */
-		   Criteria criterios = getSessionFactory().getCurrentSession().createCriteria(
-				   IngresosGastos.class);
 
 		   for(int i=0;i<12;i++){
 
@@ -235,8 +233,16 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 			   fechaInicial = new GregorianCalendar(Integer.parseInt(anyo),i ,1);
 			   fechaFinal = new GregorianCalendar(Integer.parseInt(anyo),i,d);	   
 			   
+			   Criteria criterios = getSessionFactory().getCurrentSession().createCriteria(
+					   IngresosGastos.class);
+			   
+			   /*
 			   criterios.add(Expression.between("fecha", new java.sql.Date(fechaInicial.getTimeInMillis()),
 					   new java.sql.Date(fechaFinal.getTimeInMillis())));
+			    */	
+			   
+			   criterios = criterios.add(Expression.ge("fecha", new java.sql.Date(fechaInicial.getTimeInMillis())));
+			   criterios = criterios.add(Expression.le("fecha", new java.sql.Date(fechaFinal.getTimeInMillis())));
 			   
 			   criterios.add(Expression.eq("tipo", tipo));
 			   resultados = criterios.list();
@@ -244,7 +250,8 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 				IngresosGastos inga = (IngresosGastos) iterator.next();
 				tot = tot.add(new BigDecimal(inga.getCantidad()));
 			   }			   
-			   totales.set(i, tot);			   
+			   //totales.set(i, tot);
+			   totales.add(tot);
 		   }	   
 		   
 		   return totales;
