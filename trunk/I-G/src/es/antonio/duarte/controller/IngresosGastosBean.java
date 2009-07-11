@@ -562,7 +562,8 @@ public class IngresosGastosBean {
 				   /**
 				    * Vamos calculando los resultados mensuales restando los gastos a los ingresos por cada mes
 				    */
-				   this.listaResultadosMeses.set(i, (this.listaIngresosMeses.get(i)).subtract(this.listaGastosMeses.get(i)));				   
+				   //this.listaResultadosMeses.set(i, (this.listaIngresosMeses.get(i)).subtract(this.listaGastosMeses.get(i)));				   
+				   this.listaResultadosMeses.add((this.listaIngresosMeses.get(i)).subtract(this.listaGastosMeses.get(i)));
 			   }
 		   }else{
 			   this.totalIngresosAnual = new BigDecimal(0);
