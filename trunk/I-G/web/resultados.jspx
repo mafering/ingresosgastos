@@ -20,51 +20,67 @@
 
   <h:form>
   <h:messages styleClass="errorText"/>
-	
+  
+  <h:panelGrid columns="4" width="100%" cellspacing="0" cellpadding="0">	
 	<rich:dataTable rowClasses="oddRow, evenRow" headerClass="tableHeader" cellpadding="0" cellspacing="0" 
-                    width="100%" border="0" var="ig" value="">                
-                    <f:facet name="header" styleClass="tableHeader">
-                        <rich:columnGroup>
-                            <rich:column colspan="4">
-                                <h:outputText value="#{m.resultados}" />
-                            </rich:column>
-                            <rich:column breakBefore="true">
-                                <h:outputText value="#{m.mes}" />
-                            </rich:column>
-                            <rich:column>
-                                <h:outputText value="#{m.ingresos }" />
-                            </rich:column>
-                            <rich:column>
-                                <h:outputText value="#{m.gastos }" />
-                            </rich:column>                            
-                            <rich:column>
-                                <h:outputText value="#{m.totales }" />
-                            </rich:column>
-                        </rich:columnGroup>
-                    </f:facet>
-                    
-                    <f:facet name="footer">
-                    	<rich:columnGroup>
-                            <rich:column>
-                                <h:outputText value="#{m.total }" />                            	
-							</rich:column>
-                            <rich:column style="text-align:center;color:green;">
-                                <h:outputText value="000.00" />
-                                <h:outputText value="#{ingresosGastosBean.totalIngresosAnual }" style="margin-left:5px;" />
-                            </rich:column>
-                            <rich:column style="text-align:center;color:red;">
-                                <h:outputText value="#{ingresosGastosBean.totalGastosAnual }" />
-                                <h:outputText value="€" style="margin-left:5px;" />
-                            </rich:column>
-                            <rich:column style="text-align:center;font-weight:bold;">
-                                <h:outputText value="#{ingresosGastosBean.totalResultadosAnual }" />
-                                <h:outputText value="€" style="margin-left:5px;" />
-                            </rich:column>                            
-                        </rich:columnGroup>
-                    </f:facet>        
-                    
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" width="100%" border="0" var="am" value="#{ingresosGastosBean.arrayMeses}">                
+                    	<rich:column>
+		  				<f:facet name="header">
+							<h:outputText value="#{m.mes}" />
+						</f:facet>
+                            <h:outputText value="#{am}" />		                    		
+		  				<f:facet name="footer">
+							<h:outputText value="#{m.total}" style="text-align:center;font-weight:bold;font-size:18px;" />
+						</f:facet>
+                    	</rich:column>                    	
      </rich:dataTable>
-                  
+	<rich:dataTable rowClasses="oddRow, evenRow" headerClass="tableHeader" cellpadding="0" cellspacing="0" 
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" width="100%" border="0" var="im" value="#{ingresosGastosBean.listaIngresosMeses}">                
+                    	<rich:column>
+                    	<f:facet name="header">
+							<h:outputText value="#{m.ingresos}" />
+						</f:facet>
+						<center>
+                            <h:outputText value="#{im}" />
+                         </center>		                    		
+                    	<f:facet name="footer">
+							<h:outputText value="#{ingresosGastosBean.totalIngresosAnual}" style="text-align:center;color:green;font-size:18px;" />
+						</f:facet>            	
+                    	</rich:column>        
+     </rich:dataTable>
+	<rich:dataTable rowClasses="oddRow, evenRow" headerClass="tableHeader" cellpadding="0" cellspacing="0" 
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" width="100%" border="0" var="gm" value="#{ingresosGastosBean.listaGastosMeses}">                
+                    	<rich:column>
+                    		<f:facet name="header">
+							<h:outputText value="#{m.gastos}" />
+						</f:facet>
+							<center>
+                            <h:outputText value="#{gm}" />
+                            </center>
+                           <f:facet name="footer">
+								<h:outputText value="#{ingresosGastosBean.totalGastosAnual}" style="text-align:center;color:red;font-size:18px;" />
+							</f:facet>		                    		
+                    	</rich:column>                    	
+     </rich:dataTable>
+	<rich:dataTable rowClasses="oddRow, evenRow" headerClass="tableHeader" cellpadding="0" cellspacing="0" 
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" width="100%" border="0" var="rm" value="#{ingresosGastosBean.listaResultadosMeses}">                
+                    	<rich:column>
+                    		<f:facet name="header">
+							<h:outputText value="#{m.resultados}" />
+							</f:facet>
+							<center>
+                            <h:outputText value="#{rm}" />
+                            </center>	
+                            <f:facet name="footer">
+								<h:outputText value="#{ingresosGastosBean.totalResultadosAnual}" style="text-align:center;font-weight:bold;font-size:18px;" />								
+							</f:facet>	                    		
+                    	</rich:column>                    	
+     </rich:dataTable>
+	</h:panelGrid>              
         <!-- 
         <rich:separator height="2" lineType="dotted" style="margin-top:10px;" /><br/>
         <rich:separator height="2" lineType="dashed"/><br/>

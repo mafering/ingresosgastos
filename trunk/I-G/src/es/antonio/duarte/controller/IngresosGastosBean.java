@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -116,7 +115,7 @@ public class IngresosGastosBean {
 	/**
 	 * Meses
 	 */
-	private static final String [] arrayMeses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto",
+	private String [] arrayMeses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto",
 													"Septiembre","Octubre","Noviembre","Diciembre"};
 
 	
@@ -162,7 +161,7 @@ public class IngresosGastosBean {
 	/**
 	 * Total Ingresos Anual
 	 */
-	private BigDecimal totalIngresosAnual = new BigDecimal(0);
+	private BigDecimal totalIngresosAnual = new BigDecimal(0);	
 	
 	/**
 	 * Total Gastos Anual
@@ -543,6 +542,12 @@ public class IngresosGastosBean {
 	  */
 	   private void calcularTotalesAnuales() {
 		   
+		   this.totalIngresosAnual = new BigDecimal(0);
+		   this.totalGastosAnual = new BigDecimal(0);
+		   this.totalResultadosAnual = new BigDecimal(0);
+		   this.listaResultadosMeses = new ArrayList<BigDecimal>(11);
+		   
+		   
 		   this.listaIngresosMeses = new ArrayList(servicio.calcularIngresosGastosAnuales(this.anyoConsulta,"Ingreso"));
 		   this.listaGastosMeses = new ArrayList<BigDecimal>(servicio.calcularIngresosGastosAnuales(this.anyoConsulta,"Gasto"));
 		   
@@ -564,6 +569,7 @@ public class IngresosGastosBean {
 				    */
 				   //this.listaResultadosMeses.set(i, (this.listaIngresosMeses.get(i)).subtract(this.listaGastosMeses.get(i)));				   
 				   this.listaResultadosMeses.add((this.listaIngresosMeses.get(i)).subtract(this.listaGastosMeses.get(i)));
+				   
 			   }
 		   }else{
 			   this.totalIngresosAnual = new BigDecimal(0);
@@ -679,7 +685,7 @@ public class IngresosGastosBean {
       this.resultadosTotales = new BigDecimal(0);
       this.totalGastosAnual = new BigDecimal(0);
       this.totalIngresosAnual = new BigDecimal(0);
-      this.totalResultadosAnual = new BigDecimal(0);
+      this.totalResultadosAnual = new BigDecimal(0);      
    }
    
 	public List<SelectItem> getTipos() {
@@ -828,6 +834,10 @@ public class IngresosGastosBean {
 		BigDecimal tg = new BigDecimal(0);
 		BigDecimal rt = new BigDecimal(0);
 		
+		this.ingresosTotales = new BigDecimal(0);
+		this.gastosTotales = new BigDecimal(0);
+		this.resultadosTotales = new BigDecimal(0);
+		
 		if(this.listaIngresosGastos != null){
 			
 			/**
@@ -853,6 +863,7 @@ public class IngresosGastosBean {
 			this.ingresosTotales.setScale(3, BigDecimal.ROUND_HALF_UP);
 			this.gastosTotales.setScale(3, BigDecimal.ROUND_HALF_UP);
 			this.resultadosTotales.setScale(3, BigDecimal.ROUND_HALF_UP);
+			
 		}
 	}
 
@@ -902,6 +913,10 @@ public class IngresosGastosBean {
 
 	public void setTotalResultadosAnual(BigDecimal totalResultadosAnual) {
 		this.totalResultadosAnual = totalResultadosAnual;
+	}
+
+	public String[] getArrayMeses() {
+		return arrayMeses;
 	}
 
 }

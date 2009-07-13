@@ -27,8 +27,31 @@
 	<context-param>
 	 <description>Indicar que el estado de la vista sera guardado en el cliente y no en el servidor</description>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>client</param-value>
+		<param-value>server</param-value>
+		<!-- 
+		<param-value>server</param-value>
+		-->
 	</context-param>
+	
+	<!--
+	 Para conseguir una mejora de rendimiento en aplicaciones JSF hacemos lo siguiente
+	 (no siempre recomendado)
+	 -->	
+	<context-param>
+        <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
+        <param-value>false</param-value>
+	</context-param>
+	<context-param>
+        <param-name>org.apache.myfaces.COMPRESS_STATE_IN_SESSION</param-name>
+        <param-value>false</param-value>
+	</context-param>
+	<context-param>
+        <param-name>org.apache.myfaces.NUMBER_OF_VIEWS_IN_SESSION</param-name>
+        <param-value>10</param-value>
+	</context-param>
+	
+	<!-- FIN MEJORA RENDIMIENTO -->
+	
  
 	<context-param>
 	    <description>Todos los archivos de spring: servicios, seguridad, transacciones, daos, propiedades e informes</description>
