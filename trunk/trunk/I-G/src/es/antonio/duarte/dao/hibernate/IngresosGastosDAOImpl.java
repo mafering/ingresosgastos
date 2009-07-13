@@ -246,6 +246,7 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 			   
 			   criterios.add(Expression.eq("tipo", tipo));
 			   resultados = criterios.list();
+			   tot = new BigDecimal(0);
 			   for (Iterator iterator = resultados.iterator(); iterator.hasNext();) {
 				IngresosGastos inga = (IngresosGastos) iterator.next();
 				tot = tot.add(new BigDecimal(inga.getCantidad()));

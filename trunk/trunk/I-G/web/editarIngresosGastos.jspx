@@ -41,7 +41,7 @@
 	            </h:outputLabel>
 	        </h:column>
 	        <h:column>
-	            <rich:calendar id="fecha" required="false" value="#{ingresosGastosBean.ingresogasto.fecha}" locale="es/ES"  datePattern="dd-MM-yyyy" >
+	            <rich:calendar id="fecha" required="true" value="#{ingresosGastosBean.ingresogasto.fecha}" locale="es/ES"  datePattern="dd-MM-yyyy" >
 	            	<rich:ajaxValidator event="oninputblur" />
 	            </rich:calendar>
 			</h:column>
@@ -61,7 +61,7 @@
 				</h:outputLabel>
 			</h:column>
 			<h:column>		
-				<rich:comboBox selectFirstOnUpdate="false" id="tipo" required="false" value="#{ingresosGastosBean.ingresogasto.tipo}" 
+				<rich:comboBox selectFirstOnUpdate="false" id="tipo" required="true" value="#{ingresosGastosBean.ingresogasto.tipo}" 
 					style=" width : 95%;">				 		            
 		            <f:selectItems value="#{ingresosGastosBean.tipos}" />
 				</rich:comboBox>
@@ -82,7 +82,7 @@
 				</h:outputLabel>
 			</h:column>
 			<h:column>
-				<h:inputText id="cantidad" required="false" value="#{ingresosGastosBean.ingresogasto.cantidad}" style=" width : 95%;">
+				<h:inputText id="cantidad" required="true" value="#{ingresosGastosBean.ingresogasto.cantidad}" style=" width : 95%;">
 					<f:validateDoubleRange minimum="0" maximum="10000000"/>
 				</h:inputText>
 			</h:column>
@@ -102,7 +102,7 @@
 				</h:outputLabel>
 			</h:column>
 			<h:column>
-				<h:inputTextarea id="concepto" required="false" value="#{ingresosGastosBean.ingresogasto.concepto}" style=" width : 95%;"/>				
+				<h:inputTextarea id="concepto" required="true" value="#{ingresosGastosBean.ingresogasto.concepto}" style=" width : 95%;"/>				
 			</h:column>
 			<h:column>
 				<rich:message for="fecha">
@@ -118,7 +118,7 @@
 			</h:column>
 			<h:column>
 				<div class="botonera">
-					<h:commandLink action="#{ingresosGastosBean.consultar}" styleClass="boton volver" >
+					<h:commandLink action="#{ingresosGastosBean.consultar}" styleClass="boton volver" immediate="true" >
 						<h:outputText value="#{m.volver}" />
 					</h:commandLink>
 					<h:commandLink action="#{ingresosGastosBean.insertar}" rendered="#{ingresosGastosBean.ingresogasto.id == null}" styleClass="boton insertar">
