@@ -10,6 +10,13 @@
    <to-view-id>/ingresosgastos.jspx</to-view-id>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.consultarMesAnyo}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ingresosgastos.jspx</to-view-id>
+  </navigation-case>
+ </navigation-rule>
  
  <navigation-rule>
   <navigation-case>
@@ -31,6 +38,16 @@
    <from-outcome>success</from-outcome>
    <to-view-id>/ingresosgastos.jspx</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.buscar}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ingresosgastos.jspx</to-view-id>
+  </navigation-case>   
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.aResultados}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/resultados.jspx</to-view-id>
+  </navigation-case>   
  </navigation-rule>
  
  <navigation-rule>
@@ -66,7 +83,19 @@
    <to-view-id>/resultados.jspx</to-view-id>
   </navigation-case>   
  </navigation-rule>
-
+<navigation-rule>
+  <from-view-id>/resultados.jspx</from-view-id>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.consultarMesAnyo}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ingresosgastos.jspx</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{ingresosGastosBean.aResultados}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/resultados.jspx</to-view-id>
+  </navigation-case>
+ </navigation-rule>
   
  
 </faces-config>

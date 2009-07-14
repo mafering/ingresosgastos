@@ -24,7 +24,7 @@
             </rich:dropDownMenu>
 
             <rich:dropDownMenu value="#{m.menuinformes}" direction="bottom-right" jointPoint="tr" id="dropDownMenu3">
-            <!-- 
+            	<!-- 
                 <rich:menuItem value="#{m.generarinforme}" action="#{informesBean.generarInforme}" id="menuItem3"/>
                 -->
             </rich:dropDownMenu>
@@ -50,13 +50,16 @@
 			</rich:comboBox>
 			
 			<div class="botonera">            
-	            <h:commandLink action="#{ingresosGastosBean.consultarMesAnyo}" styleClass="boton consultar">
+	            <h:commandLink action="#{ingresosGastosBean.consultarMesAnyo}" styleClass="boton2 consultar">
 					<h:outputText value="#{m.consultar}" />
+				</h:commandLink>
+				<h:commandLink action="#{ingresosGastosBean.aResultados}" styleClass="boton2 consultarRA ">
+						<h:outputText value="#{m.cRA}" />
 				</h:commandLink>
 			</div>
        </h:panelGrid>
        
-       <rich:separator height="4" lineType="double" style="margin-top:20px;" /><br/>             
+       <rich:separator height="3" lineType="double" style="margin-top:10px;" /><br/>             
        
     </h:form>
 </ui:composition>

@@ -21,17 +21,20 @@
   <h:form>
   <h:messages styleClass="errorText"/>
   
+  <rich:separator height="0" lineType="solid"/><br/>
+  <rich:separator height="0" lineType="solid"/><br/>
+  
   <h:panelGrid columns="4" width="100%" cellspacing="0" cellpadding="0">	
 	<rich:dataTable rowClasses="oddRow, evenRow" headerClass="tableHeader" cellpadding="0" cellspacing="0" 
                     onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
                     onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" width="100%" border="0" var="am" value="#{ingresosGastosBean.arrayMeses}">                
-                    	<rich:column>
+                    	<rich:column style="background-color:#E1E6EC;">
 		  				<f:facet name="header">
 							<h:outputText value="#{m.mes}" />
 						</f:facet>
                             <h:outputText value="#{am}" />		                    		
 		  				<f:facet name="footer">
-							<h:outputText value="#{m.total}" style="text-align:center;font-weight:bold;font-size:18px;" />
+							<h:outputText value="#{m.total}" style="text-align:center;font-weight:bold;font-size:22px;" />
 						</f:facet>
                     	</rich:column>                    	
      </rich:dataTable>
@@ -46,7 +49,7 @@
                             <h:outputText value="#{im}" />
                          </center>		                    		
                     	<f:facet name="footer">
-							<h:outputText value="#{ingresosGastosBean.totalIngresosAnual}" style="text-align:center;color:green;font-size:18px;" />
+							<h:outputText value="#{ingresosGastosBean.totalIngresosAnual}" style="text-align:center;color:green;font-weight:bold;font-size:22px;" />
 						</f:facet>            	
                     	</rich:column>        
      </rich:dataTable>
@@ -61,7 +64,7 @@
                             <h:outputText value="#{gm}" />
                             </center>
                            <f:facet name="footer">
-								<h:outputText value="#{ingresosGastosBean.totalGastosAnual}" style="text-align:center;color:red;font-size:18px;" />
+								<h:outputText value="#{ingresosGastosBean.totalGastosAnual}" style="text-align:center;color:red;font-weight:bold;font-size:22px;" />
 							</f:facet>		                    		
                     	</rich:column>                    	
      </rich:dataTable>
@@ -76,8 +79,8 @@
                             <h:outputText value="#{rm}" />
                             </center>	
                             <f:facet name="footer">
-								<h:outputText value="#{ingresosGastosBean.totalResultadosAnual}" style="text-align:center;font-weight:bold;font-size:18px;" />								
-							</f:facet>	                    		
+								<h:outputText value="#{ingresosGastosBean.totalResultadosAnual}" style="text-align:center;font-weight:bold;font-size:22px;" />								
+							</f:facet>	   
                     	</rich:column>                    	
      </rich:dataTable>
 	</h:panelGrid>              
@@ -87,9 +90,24 @@
 		<rich:separator height="4" lineType="double"/><br/>
 		<rich:separator height="2" lineType="solid"/><br/>
 		-->
-	
-	    
-    </h:form>			
+		<rich:separator height="0" lineType="solid" style="margin-top:5px;"/><br/>
+		    
+    </h:form>
+    
+    
+    <rich:panel id="sample1"  >
+        <p style="font-size:10px;font-weight: bold;color:#000;">
+            Todos estos datos vienen expresados en <strong style="font-size: 1.5em;">Euros (€)</strong>	. 
+            
+        </p>
+        <rich:toolTip>
+            <span style="white-space:nowrap;text-align: justify;">
+                Para cambiar de año seleccione en el menu izquierdo el panel de <strong>Consultar Resultados Anuales</strong> .<br/>
+                Indicando el año que desea consultar si se trata de uno diferente al actual.
+            </span>
+        </rich:toolTip>
+    </rich:panel>
+  	<rich:separator height="0" lineType="solid"/><br/>			
   
   </ui:define>
 </ui:composition>

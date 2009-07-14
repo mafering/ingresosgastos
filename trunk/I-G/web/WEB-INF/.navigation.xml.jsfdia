@@ -11,8 +11,9 @@
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules::1" SHAPE="32,129,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::1" NAME="item">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{logoutBean.logout}:#logout.jspx" NAME="output"
-    PATH="/logout.jspx" TARGET="rules:#logout.jspx" TITLE="#{logoutBean.logout}:success"/>
+    ID="success:#{ingresosGastosBean.consultarMesAnyo}:#ingresosgastos.jspx"
+    NAME="output" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.consultarMesAnyo}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup"
@@ -58,10 +59,37 @@
     ID="success:#{ingresosGastosBean.actualizarLista}:#ingresosgastos.jspx"
     NAME="output1" PATH="/ingresosgastos.jspx"
     TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.actualizarLista}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.buscar}:#ingresosgastos.jspx"
+    NAME="output2" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.buscar}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.aResultados}:#resultados.jspx"
+    NAME="output3" PATH="/resultados.jspx"
+    TARGET="rules:#resultados.jspx" TITLE="#{ingresosGastosBean.aResultados}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#logout.jspx"
   PATH="/logout.jspx" SHAPE="240,177,0,0"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#resultados.jspx"
-  PATH="/resultados.jspx" SHAPE="576,289,0,0"/>
+  PATH="/resultados.jspx" SHAPE="576,289,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#resultados.jspx:0"
+   NAME="item" PATH="/resultados.jspx">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.consultarMesAnyo}:#ingresosgastos.jspx"
+    NAME="output" PATH="/ingresosgastos.jspx"
+    TARGET="rules:#ingresosgastos.jspx" TITLE="#{ingresosGastosBean.consultarMesAnyo}:success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{ingresosGastosBean.aResultados}:#resultados.jspx"
+    NAME="output1" PATH="/resultados.jspx"
+    TARGET="rules:#resultados.jspx" TITLE="#{ingresosGastosBean.aResultados}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules::2" SHAPE="32,545,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::2" NAME="item">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{logoutBean.logout}:#logout.jspx" NAME="output"
+    PATH="/logout.jspx" TARGET="rules:#logout.jspx" TITLE="#{logoutBean.logout}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

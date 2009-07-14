@@ -796,6 +796,21 @@ button, .boton {
 	text-decoration: none;
 }
 
+button, .boton2 {
+	text-align: center;
+	background: transparent none;
+	border: 0px;
+	width: 50px;
+	/*font-family: Verdana, Arial, Helvetica, sans-serif;*/
+	font-size: 10px;
+	font-weight:bold;
+	color: #333333;
+	padding-top: 20px;
+	text-decoration: none;	
+}
+
+
+
 /* Iconos grandes*/
 .boton.insertar { background: transparent url("../images/ico_agregar.gif") no-repeat top center; }
 .boton.actualizar{ background: transparent url("../images/view-refresh.png") no-repeat top center; }
@@ -803,6 +818,8 @@ button, .boton {
 .boton.buscar { background: transparent url("../images/system-search.png") no-repeat top center; }
 .boton.limpiar { background: transparent url("../images/edit-clear.png") no-repeat top center; }
 .boton.consultar { background: transparent url("../images/ico_buscar.gif") no-repeat top center; }
+.boton2.consultar { background: transparent url("../images/ico_buscar.gif") no-repeat top center;margin-left: -5px; }
+.boton2.consultarRA { background: transparent url("../images/edit-find.png") no-repeat top center; margin-left: 50px; float: right;margin-top: -38px;}
 
 .menuConsulta{
 	font-size: .65em;
@@ -818,4 +835,33 @@ button, .boton {
 .totalesValor{
 	font-size: 1.5em;	
 	font-weight: bold;
+}
+
+.tooltip {
+            background-color:#{richSkin.generalBackgroundColor};
+            border-width:3px;
+            padding:10px;
+}
+.tooltip-text {
+    width:100%;
+    height:80px;
+    cursor:arrow;
+    border-width:2px;
+    text-align:center;
+    display: table-cell;
+    vertical-align: middle; 
+    font-size: 12px;
+    margin-top: 10px;
+}
+.tooltipData {
+    font-weight: bold;
+}
+.tituloConsulta{
+  font-family: Arial Narrow;
+  font-size: 20px;
+  color: #626262;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  background-color:#F1F1F1;
 }
