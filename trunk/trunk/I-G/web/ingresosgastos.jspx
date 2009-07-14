@@ -127,7 +127,11 @@
 		    </rich:panel>
 		    <rich:panel>	
 				<f:facet name="header">
-					<h:outputText value="#{m.totales}" />
+				<h:outputFormat value="#{m.totales}" >
+						<f:param id="i0" value="#{ingresosGastosBean.mesConsulta }"/>
+						<f:param id="i1" value="#{ingresosGastosBean.anyoConsulta }"/>
+				</h:outputFormat>
+					
 				</f:facet>
 				<h:panelGrid columns="3" width="100%" cellspadding="5" cellspacing="5">
 					<h:outputText value="#{m.ingresos}" styleClass="totalesLabel" style="color:green;" />
