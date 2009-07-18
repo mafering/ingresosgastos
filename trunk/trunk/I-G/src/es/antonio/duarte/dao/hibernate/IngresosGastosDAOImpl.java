@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
@@ -41,7 +40,7 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 	               IngresosGastos.class);
 	      //criterios = criterios.add(Example.create(ig));
 	      criterios = criterios.add(Expression.eq("fecha",fecha))
-	      							.addOrder(Order.asc("fecha") )
+	      							.addOrder(Order.desc("fecha") )
 	    		  					.setFirstResult(0);
 
 	      resultados = criterios.list();
@@ -62,7 +61,7 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 	      Criteria criterios = getSessionFactory().getCurrentSession().createCriteria(
 	               IngresosGastos.class);
 	      criterios = criterios.add(Expression.eq("tipo",tipo))
-	      							.addOrder(Order.asc("fecha"))
+	      							.addOrder(Order.desc("fecha"))
 	      							.setFirstResult(0)
 	      				;
 	      resultados = criterios.list();
@@ -97,7 +96,7 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 		   if(concepto != null && !concepto.equalsIgnoreCase("")){
 			   criterios = criterios.add(Expression.like("concepto",concepto,MatchMode.ANYWHERE));			   
 		   }
-		   criterios.addOrder(Order.asc("fecha"))
+		   criterios.addOrder(Order.desc("fecha"))
 		   .setFirstResult(0)
 		   ;
 		   resultados = criterios.list();
@@ -180,7 +179,7 @@ public class IngresosGastosDAOImpl extends DAOGeneralImpl implements IngresosGas
 		   criterios = criterios.add(Expression.ge("fecha", new java.sql.Date(fechaInicial.getTimeInMillis())));
 		   criterios = criterios.add(Expression.le("fecha", new java.sql.Date(fechaFinal.getTimeInMillis())));
 		   
-		   criterios.addOrder(Order.asc("fecha"))
+		   criterios.addOrder(Order.desc("fecha"))
 		   .setFirstResult(0)
 		   ;
 		   resultados = criterios.list();
