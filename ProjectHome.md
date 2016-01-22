@@ -1,0 +1,1 @@
+Esta aplicación web realiza una gestión sencilla de los ingresos y gastos domésticos. De forma que consta simplemente de una inserción de un movimiento que puede ser de uno de los dos tipos y finalmente hará cálculos y estadísticas para llevar un control total.
